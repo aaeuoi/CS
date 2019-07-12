@@ -1,0 +1,189 @@
+<resources>
+    <string name="app_name">"CA_Training"</string>
+    <string name="tit_saludo">"¡Bienvenidos a CA_Training!"</string>
+
+    <string name="navigation_drawer_open">"Open navigation drawer"</string>
+    <string name="navigation_drawer_close">"Close navigation drawer"</string>
+    <string name="nav_header_title">"CAS Training"</string>
+    <string name="nav_header_subtitle">"https://www.cas-training.com/"</string>
+    <string name="nav_header_desc">"Navigation header"</string>
+    <string name="action_settings">"Settings"</string>
+
+    <string name="menu_home">"Home"</string>
+    <string name="menu_gallery">"Gallery"</string>
+    <string name="menu_slideshow">"Slideshow"</string>
+    <string name="menu_tools">"Tools"</string>
+    <string name="menu_share">"Share"</string>
+    <string name="menu_send">"Send"</string>
+    <string name="menu_saludo">"Bienvenidos a CAS_Training"</string>
+
+    <string name="menu_formacion">"Formación"</string>
+    <string name="menu_formacion_cursos">"Cursos"</string>
+    <string name="menu_formacion_cursos_destacados">"Destacados"</string>
+    <string name="menu_formacion_cursos_convocatoria">"Convocatorias"</string>
+    <string name="menu_consultoria_servicios">"Consultoria y Servicios"</string>
+    <string name="menu_centro_certificador">"Centro Certificador"</string>
+    <string name="menu_rrss">"Redes Sociales"</string>
+    <string name="menu_contacto">"Contacto"</string>
+    <string name="menu_info">"¿Quiénes somos?"</string>
+
+    <string name="convocatoria_info">"Convocatorias"</string>
+    <string name="convocatoria_area">"Area"</string>
+    <string name="convocatoria_cateoria">"Categoria"</string>
+    <string name="convocatoria_subcategoria">"Subcategoria"</string>
+    <string name="convocatoria_fabricante">"Fabricante"</string>
+    <string name="convocatoria_curso">"Curso"</string>
+    <string name="convocatoria_nombre">"Nombre"</string>
+    <string name="convocatoria_inicio">"Inicio"</string>
+    <string name="convocatoria_horario">"Horario"</string>
+    <string name="convocatoria_lugar">"Lugar"</string>
+    <string name="convocatoria_modalidad">"Modalidad"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">"Hola fragmento"</string>
+
+    <!--convocatorias -->
+    <string name="title_activity_destacados">"DestacadosActivity"</string>
+    <string name="title_home">"Home"</string>
+    <string name="title_dashboard">"Dashboard"</string>
+    <string name="title_notifications">"Notifications"</string>
+    <string name="title_activity_basic">"BasicActivity"</string>
+
+    <!--fabricantes -->
+    <string name="text_view_fab_00">"Adobe"</string>
+    <string name="text_view_fab_01">"Apache"</string>
+    <string name="text_view_fab_02">"AutoDesk"</string>
+    <string name="text_view_fab_03">"Bentley"</string>
+    <string name="text_view_fab_04">"CAS Training"</string>
+    <string name="text_view_fab_05">"Cisco"</string>
+    <string name="text_view_fab_06">"Citrix"</string>
+    <string name="text_view_fab_07">"Corel"</string>
+    <string name="text_view_fab_08">"ESRI"</string>
+    <string name="text_view_fab_09">"Exin"</string>
+    <string name="text_view_fab_10">"LPI"</string>
+    <string name="text_view_fab_11">"Microsoft"</string>
+    <string name="text_view_fab_12">"Oracle"</string>
+    <string name="text_view_fab_13">"PMI"</string>
+    <string name="text_view_fab_14">"Sun Microsystem"</string>
+    <string name="text_view_fab_15">"VMWare"</string>
+    <string name="text_view_fab_16">"PeopleCert"</string>
+    <string name="text_view_fab_17">"Angular"</string>
+    <string name="text_view_fab_18">"ITIL"</string>
+
+    <!--modalidades -->
+    <string name="text_view_mod_00">"Presencial"</string>
+    <string name="text_view_mod_01">"Teleresencial"</string>
+    <string name="text_view_mod_02">"Online"</string>
+
+    <!--areas -->
+    <string name="text_view_are_00">"Coaching"</string>
+    <string name="text_view_are_01">"Compras y Logísica"</string>
+    <string name="text_view_are_02">"Gestión Empresarial"</string>
+    <string name="text_view_are_03">"Habilidades"</string>
+    <string name="text_view_are_04">"Health and Wellness"</string>
+    <string name="text_view_are_05">"Marketing"</string>
+    <string name="text_view_are_06">"TIC"</string>
+    <string name="text_view_are_07">"Ventas y Comercial"</string>
+
+    <!--categorias -->
+    <string name="text_view_cat_00">"Aplicaciones"</string>
+    <string name="text_view_cat_01">"Bases de Datos"</string>
+    <string name="text_view_cat_02">"Calidad y Metodologías"</string>
+    <string name="text_view_cat_03">"Coaching"</string>
+    <string name="text_view_cat_04">"Desarrollo"</string>
+    <string name="text_view_cat_05">"Diseño y Multimedia"</string>
+    <string name="text_view_cat_06">"Económico-Financiera"</string>
+    <string name="text_view_cat_07">"Logística"</string>
+    <string name="text_view_cat_08">"Sistemas"</string>
+
+    <!--subcategorias -->
+    <string name="text_view_sub_00">"Big Data"</string>
+    <string name="text_view_sub_01">"Coaching"</string>
+    <string name="text_view_sub_02">"Compras y Logística"</string>
+    <string name="text_view_sub_03">"Diseño WEB"</string>
+    <string name="text_view_sub_04">"Diseño gráfico y Animación"</string>
+    <string name="text_view_sub_05">"Económico Financiera"</string>
+    <string name="text_view_sub_06">"Gestión Empresarial"</string>
+    <string name="text_view_sub_07">"Habilidades"</string>
+    <string name="text_view_sub_08">"Health and Wellness"</string>
+    <string name="text_view_sub_09">"Logística"</string>
+    <string name="text_view_sub_10">"Oracle Data Base"</string>
+    <string name="text_view_sub_11">"Aplicaciones WEB"</string>
+    <string name="text_view_sub_12">"ITIL"</string>
+    <string name="text_view_sub_13">"UNIX-LINUX"</string>
+
+    <string name="text_view_cursos">"Cursos"</string>
+    <string name="text_buttom_buscar">"Buscar"</string>
+    <string name="image_find">"Find Button"</string>
+    <!-- tit_cursos_campos -->
+    <string name="tit_curso_area">"Área:"</string>
+    <string name="tit_curso_categoria">"Categoría:"</string>
+    <string name="tit_curso_subcategoria">"Subcategoría:"</string>
+    <string name="tit_curso_sku">"Sku:"</string>
+    <string name="tit_curso_nombre">"Nombre:"</string>
+    <string name="tit_curso_duracion">"Duración:"</string>
+    <string name="tit_curso_inicio">"Inicio:"</string>
+    <string name="tit_curso_formato">"Formato:"</string>
+    <string name="tit_curso_idioma">"Idioma:"</string>
+    <string name="tit_curso_modalidad">"Modalidad:"</string>
+    <string name="tit_curso_fabricante">"Fabricante:"</string>
+    <string name="tit_curso_nivel">"Nivel:"</string>
+    <string name="tit_curso_oficial">"Oficial:"</string>
+    <string name="tit_curso_documentacion">"Documentación:"</string>
+    <string name="tit_curso_descripcion">"Descripción:"</string>
+    <string name="tit_curso_objetivos">"Objetivos:"</string>
+    <string name="tit_curso_audiencia">"Audiencia:"</string>
+    <string name="tit_curso_contenidos">"Contenidos:"</string>
+    <string name="tit_curso_imagen">"Imagen:"</string>
+    <string name="tit_curso_pdf_curso">"PDF:"</string>
+    <string name="tit_curso_destacado">"Destacado:"</string>
+    <string name="tit_curso_info_contacto">"Teléfono:"</string>
+    <string name="tit_curso_direccion">"Dirección:"</string>
+    <!-- cursos_campos -->
+    <string name="curso_area">"area:"</string>
+    <string name="curso_categoria">"categoria"</string>
+    <string name="curso_subcategoria">"subcategoria"</string>
+    <string name="curso_sku">"sku"</string>
+    <string name="curso_nombre">"nombre"</string>
+    <string name="curso_duracion">"duracion"</string>
+    <string name="curso_inicio">"inicio"</string>
+    <string name="curso_formato">"formato"</string>
+    <string name="curso_idioma">"idioma"</string>
+    <string name="curso_modalidad">"modalidad"</string>
+    <string name="curso_fabricante">"fabricante"</string>
+    <string name="curso_nivel">"nivel"</string>
+    <string name="curso_oficial">"oficial"</string>
+    <string name="curso_documentacion">"documentacion"</string>
+    <string name="curso_descripcion">"descripcion"</string>
+    <string name="curso_objetivos">"objetivos"</string>
+    <string name="curso_audiencia">"audiencia"</string>
+    <string name="curso_contenidos">"contenidos"</string>
+    <string name="curso_imagen">"imagen"</string>
+    <string name="curso_pdf_curso">"pdf"</string>
+    <string name="curso_destacado">"destacado"</string>
+    <string name="curso_info_contacto">"telefono"</string>
+    <string name="curso_direccion">"direccion"</string>
+
+
+    <string name="tit_cursos">"Cursos"</string>
+    <string name="tit_contacto">"Contacto"</string>
+    <string name="tit_destacados">"Destacados"</string>
+    <string name="tit_convocatoria">"Convocatorias"</string>
+    <string name="tit_certificador">"Centro Certificador"</string>
+    <string name="tit_consultoria_s">"Consultoría y Servicios"</string>
+
+    <string name="tit_rrss">"Redes Sociales"</string>
+    <string name="tit_info">"¿Quiénes somos?"</string>
+    <string name="title_activity_database_handler">"DatabaseHandler"</string>
+
+    <string name="tit_bbdd_modalidad">"Modalidad:"</string>
+    <string name="tit_bbdd_fabricante">"Fabricante:"</string>
+    <string name="tit_bbdd_area">"Area:"</string>
+    <string name="tit_bbdd_categoria">"Categoria:"</string>
+    <string name="tit_bbdd_subcategoria">"Subcategoria"</string>
+    <string name="tit_bbdd_convocatoria">"Convocatoria:"</string>
+    <string name="tit_bbdd_curso">"Curso:"</string>
+    <string name="tit_bbdd_nombre">"Nombre:"</string>
+
+    <string name="hint_nombre">"nombre curso"</string>
+</resources>

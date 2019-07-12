@@ -1,0 +1,617 @@
+<resources>
+    <!--cursos -->
+    <string-array name="cu_0">
+        <item>6</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>"Big Data. Desarrollo y Aplicaciones"</item>
+        <item>99</item>
+        <item>"2019/09/21"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>4</item>
+        <item>"Experto"</item>
+        <item>"Development Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"Administración en Big Data y sus nuevas herramientas"</item>
+        <item>"Mejoras con las nuevas herramientas"</item>
+        <item>"Administradores expertos en Big Data"</item>
+        <item>"UML, herramientas Big Data, sistemas de documentación automáticos, casos de prueba"</item>
+        <item>"https://www.cas-training.com/cursos.php/big_data_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/big_data_doc01.pdf"</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="cu_1">
+        <item>0</item>
+        <item>6</item>
+        <item>0</item>
+        <item>1</item>
+        <item>"Programación con ActionScript"</item>
+        <item>100</item>
+        <item>"2019/07/01"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>0</item>
+        <item>"Experto"</item>
+        <item>"Devlopment Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"Programación con ActionScript para reducir el tiempo de desarrollo"</item>
+        <item>"Reducir el tiempo de desarrollo un 50 por ciento"</item>
+        <item>"Progrmadores expertos en ActionScript"</item>
+        <item>"UML, herramientas Adobe, sistemas de documentación automáticos, casos de prueba"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_doc01.pdf"</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="cu_2">
+        <item>0</item>
+        <item>6</item>
+        <item>0</item>
+        <item>2</item>
+        <item>"Programación con ActionScript"</item>
+        <item>100</item>
+        <item>"2019/07/01"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>0</item>
+        <item>"Experto"</item>
+        <item>"Devlopment Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"Programación con ActionScript para reducir el tiempo de desarrollo"</item>
+        <item>"Reducir el tiempo de desarrollo un 50 por ciento"</item>
+        <item>"Progrmadores expertos en ActionScript"</item>
+        <item>"UML, herramientas Adobe, sistemas de documentación automáticos, casos de prueba"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_doc01.pdf"</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="cu_3">
+        <item>6</item>
+        <item>1</item>
+        <item>10</item>
+        <item>3</item>
+        <item>"Administración de la Base de Datos Oracle v.12c"</item>
+        <item>126</item>
+        <item>"2019/09/15"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>12</item>
+        <item>"Experto"</item>
+        <item>"Development Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"SQL de la BBDD Oracle v.12c"</item>
+        <item>"Nuevas caracerísticas de la SQL"</item>
+        <item>"Admnistradores expertos en Oracle"</item>
+        <item>"UML, herramientas Adobe, sistemas de documentación automáticos, casos de prueba"</item>
+        <item>"https://www.cas-training.com/cursos.php/oracle_v12c_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/oracle_v12c_doc01.pdf"</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="cu_4">
+        <item>0</item>
+        <item>6</item>
+        <item>0</item>
+        <item>4</item>
+        <item>"Programación con ActionScript"</item>
+        <item>100</item>
+        <item>"2019/07/01"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>0</item>
+        <item>"Experto"</item>
+        <item>"Development Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"Programación con ActionScript para reducir el tiempo de desarrollo"</item>
+        <item>"Reducir el tiempo de desarrollo un 50 por ciento"</item>
+        <item>"Programadores expertos en ActionScript"</item>
+        <item>"UML, herramientas Adobe, sistemas de documentación automáticos, casos de prueba"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_doc01.pdf"</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="cu_5">
+        <item>6</item>
+        <item>4</item>
+        <item>11</item>
+        <item>5</item>
+        <item>"Desarrollo FrontEnd con Angular"</item>
+        <item>48</item>
+        <item>"2019/09/11"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>17</item>
+        <item>"Experto"</item>
+        <item>"Development Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"Programación con Angular para reducir el tiempo de desarrollo"</item>
+        <item>"Reducir el tiempo de desarrollo un 50 por ciento"</item>
+        <item>"Programadores expertos en Front End"</item>
+        <item>"UML, herramientas Angular, sistemas de documentación automáticos, casos de prueba"</item>
+        <item>"https://www.cas-training.com/cursos.php/angular_frontend_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/angular_frontend_doc01.pdf"</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="cu_6">
+        <item>0</item>
+        <item>6</item>
+        <item>0</item>
+        <item>6</item>
+        <item>"Programación con ActionScript"</item>
+        <item>100</item>
+        <item>"2019/07/01"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>0</item>
+        <item>"Experto"</item>
+        <item>"Devlopment Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"Programación con ActionScript para reducir el tiempo de desarrollo"</item>
+        <item>"Reducir el tiempo de desarrollo un 50 por ciento"</item>
+        <item>"Progrmadores expertos en ActionScript"</item>
+        <item>"UML, herramientas Adobe, sistemas de documentación automáticos, casos de prueba"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_doc01.pdf"</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="cu_7">
+        <item>0</item>
+        <item>6</item>
+        <item>0</item>
+        <item>7</item>
+        <item>"Programación con ActionScript"</item>
+        <item>100</item>
+        <item>"2019/07/01"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>0</item>
+        <item>"Experto"</item>
+        <item>"Development Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"Programación con ActionScript para reducir el tiempo de desarrollo"</item>
+        <item>"Reducir el tiempo de desarrollo un 50 por ciento"</item>
+        <item>"Progrmadores expertos en ActionScript"</item>
+        <item>"UML, herramientas Adobe, sistemas de documentación automáticos, casos de prueba"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_doc01.pdf"</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="cu_8">
+        <item>6</item>
+        <item>10</item>
+        <item>12</item>
+        <item>8</item>
+        <item>"ITIL Foundation Certificate in IT Service Managment"</item>
+        <item>20</item>
+        <item>"2019/10/01"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>18</item>
+        <item>"Experto"</item>
+        <item>"Development Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"IT managmene"</item>
+        <item>"Mejoras en la gesion IT"</item>
+        <item>"Gestores de IT"</item>
+        <item>"Herramientas de gestion y nuevos desarrollos"</item>
+        <item>"https://www.cas-training.com/cursos.php/itl_tic_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/itl_tic_doc01.pdf"</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="cu_9">
+        <item>0</item>
+        <item>6</item>
+        <item>0</item>
+        <item>9</item>
+        <item>"Programación con ActionScript"</item>
+        <item>100</item>
+        <item>"2019/07/01"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>0</item>
+        <item>"Experto"</item>
+        <item>"Devlopment Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"Programación con ActionScript para reducir el tiempo de desarrollo"</item>
+        <item>"Reducir el tiempo de desarrollo un 50 por ciento"</item>
+        <item>"Programadores expertos en ActionScript"</item>
+        <item>"UML, herramientas Adobe, sistemas de documentación automaticos, casos de prueba"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/adobe_actionscript_doc01.pdf"</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="cu_10">
+        <item>6</item>
+        <item>9</item>
+        <item>13</item>
+        <item>10</item>
+        <item>"Certificación LINUX LPIC-1 y LPIC-2"</item>
+        <item>80</item>
+        <item>"2019/09/01"</item>
+        <item>"Formato"</item>
+        <item>"Español"</item>
+        <item>0</item>
+        <item>10</item>
+        <item>"Experto"</item>
+        <item>"Development Title"</item>
+        <item>"Book, pdfs"</item>
+        <item>"Certificación en administración de sistemas LINUX-1 LINUX-2"</item>
+        <item>"Obtener certificación"</item>
+        <item>"Administradores expertos en LINUX"</item>
+        <item>"Herramientas de administración y documentación de LINUX"</item>
+        <item>"https://www.cas-training.com/cursos.php/linux_c1_c2_fig01.jpg"</item>
+        <item>"https://www.cas-training.com/cursos.php/linux_c1_c2   _doc01.pdf"</item>
+        <item>1</item>
+    </string-array>
+
+    <!--convocatorias -->
+    <string-array name="des_0">
+        <item>0</item>
+        <item>0</item>
+        <item>"2019/07/01"</item>
+        <item>"Lunes a Viernes de 09:00-14:00"</item>
+        <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="des_1">
+        <item>1</item>
+        <item>3</item>
+        <item>"2019/07/01"</item>
+        <item>"Lunes a Viernes de 09:00-14:00"</item>
+        <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="des_2">
+        <item>2</item>
+        <item>5</item>
+        <item>"2019/10/01"</item>
+        <item>"Lunes a Viernes de 09:00-14:00"</item>
+        <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="des_3">
+        <item>3</item>
+        <item>8</item>
+        <item>"2019/08/01"</item>
+        <item>"Lunes a Viernes de 09:00-14:00"</item>
+        <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="des_4">
+        <item>4</item>
+        <item>10</item>
+        <item>"2019/09/01"</item>
+        <item>"Viernes a Sabado de 09:00-14:00 15:00-20:00"</item>
+        <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
+        <item>0</item>
+    </string-array>
+    <!--fabricantes -->
+    <string-array name="f_0">
+        <item>0</item>
+        <item>@string/text_view_fab_00</item>
+    </string-array>
+    <string-array name="f_1">
+        <item>1</item>
+        <item>@string/text_view_fab_01</item>
+    </string-array>
+    <string-array name="f_2">
+        <item>2</item>
+        <item>@string/text_view_fab_02</item>
+    </string-array>
+    <string-array name="f_3">
+        <item>3</item>
+        <item>@string/text_view_fab_03</item>
+    </string-array>
+    <string-array name="f_4">
+        <item>4</item>
+        <item>@string/text_view_fab_04</item>
+    </string-array>
+    <string-array name="f_5">
+        <item>5</item>
+        <item>@string/text_view_fab_05</item>
+    </string-array>
+    <string-array name="f_6">
+        <item>6</item>
+        <item>@string/text_view_fab_06</item>
+    </string-array>
+    <string-array name="f_7">
+        <item>7</item>
+        <item>@string/text_view_fab_07</item>
+    </string-array>
+    <string-array name="f_8">
+        <item>8</item>
+        <item>@string/text_view_fab_08</item>
+    </string-array>
+    <string-array name="f_9">
+        <item>9</item>
+        <item>@string/text_view_fab_09</item>
+    </string-array>
+    <string-array name="f_10">
+        <item>10</item>
+        <item>@string/text_view_fab_10</item>
+    </string-array>
+    <string-array name="f_11">
+        <item>11</item>
+        <item>@string/text_view_fab_11</item>
+    </string-array>
+    <string-array name="f_12">
+        <item>12</item>
+        <item>@string/text_view_fab_12</item>
+    </string-array>
+    <string-array name="f_13">
+        <item>13</item>
+        <item>@string/text_view_fab_13</item>
+    </string-array>
+    <string-array name="f_14">
+        <item>14</item>
+        <item>@string/text_view_fab_14</item>
+    </string-array>
+    <string-array name="f_15">
+        <item>15</item>
+        <item>@string/text_view_fab_15</item>
+    </string-array>
+    <string-array name="f_16">
+        <item>16</item>
+        <item>@string/text_view_fab_16</item>
+    </string-array>
+    <string-array name="f_17">
+        <item>17</item>
+        <item>@string/text_view_fab_17</item>
+    </string-array>
+    <string-array name="f_18">
+        <item>18</item>
+        <item>@string/text_view_fab_18</item>
+    </string-array>
+
+    <string-array name="opciones_fabricantes">
+        <item>@string/text_view_fab_00</item>
+        <item>@string/text_view_fab_01</item>
+        <item>@string/text_view_fab_02</item>
+        <item>@string/text_view_fab_03</item>
+        <item>@string/text_view_fab_04</item>
+        <item>@string/text_view_fab_05</item>
+        <item>@string/text_view_fab_06</item>
+        <item>@string/text_view_fab_07</item>
+        <item>@string/text_view_fab_08</item>
+        <item>@string/text_view_fab_09</item>
+        <item>@string/text_view_fab_10</item>
+        <item>@string/text_view_fab_11</item>
+        <item>@string/text_view_fab_12</item>
+        <item>@string/text_view_fab_13</item>
+        <item>@string/text_view_fab_14</item>
+        <item>@string/text_view_fab_15</item>
+        <item>@string/text_view_fab_13</item>
+        <item>@string/text_view_fab_17</item>
+        <item>@string/text_view_fab_18</item>
+    </string-array>
+    <!--modalidades -->
+    <string-array name="m_0">
+        <item>0</item>
+        <item>@string/text_view_mod_00</item>
+    </string-array>
+    <string-array name="m_1">
+        <item>1</item>
+        <item>@string/text_view_mod_01</item>
+    </string-array>
+    <string-array name="m_2">
+        <item>2</item>
+        <item>@string/text_view_mod_02</item>
+    </string-array>
+
+    <string-array name="opciones_modalidades">
+        <item>@string/text_view_mod_00</item>
+        <item>@string/text_view_mod_01</item>
+        <item>@string/text_view_mod_02</item>
+    </string-array>
+    <!--areas -->
+    <string-array name="a_0">
+        <item>0</item>
+        <item>@string/text_view_are_00</item>
+    </string-array>
+    <string-array name="a_1">
+        <item>1</item>
+        <item>@string/text_view_are_01</item>
+    </string-array>
+    <string-array name="a_2">
+        <item>2</item>
+        <item>@string/text_view_are_02</item>
+    </string-array>
+    <string-array name="a_3">
+        <item>3</item>
+        <item>@string/text_view_are_03</item>
+    </string-array>
+    <string-array name="a_4">
+        <item>4</item>
+        <item>@string/text_view_are_04</item>
+    </string-array>
+    <string-array name="a_5">
+        <item>5</item>
+        <item>@string/text_view_are_05</item>
+    </string-array>
+    <string-array name="a_6">
+        <item>6</item>
+        <item>@string/text_view_are_06</item>
+    </string-array>
+    <string-array name="a_7">
+        <item>7</item>
+        <item>@string/text_view_are_07</item>
+    </string-array>
+
+    <string-array name="opciones_areas">
+        <item>@string/text_view_are_00</item>
+        <item>@string/text_view_are_01</item>
+        <item>@string/text_view_are_02</item>
+        <item>@string/text_view_are_03</item>
+        <item>@string/text_view_are_04</item>
+        <item>@string/text_view_are_05</item>
+        <item>@string/text_view_are_06</item>
+        <item>@string/text_view_are_07</item>
+    </string-array>
+    <!--categorias -->
+    <string-array name="ca_0">
+        <item>0</item>
+        <item>@string/text_view_cat_00</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="ca_1">
+        <item>1</item>
+        <item>@string/text_view_cat_01</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="ca_2">
+        <item>2</item>
+        <item>@string/text_view_cat_02</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="ca_3">
+        <item>3</item>
+        <item>@string/text_view_cat_03</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="ca_4">
+        <item>4</item>
+        <item>@string/text_view_cat_04</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="ca_5">
+        <item>5</item>
+        <item>@string/text_view_cat_05</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="ca_6">
+        <item>6</item>
+        <item>@string/text_view_cat_06</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="ca_7">
+        <item>7</item>
+        <item>@string/text_view_cat_06</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="ca_8">
+        <item>8</item>
+        <item>@string/text_view_cat_07</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="ca_9">
+        <item>9</item>
+        <item>@string/text_view_cat_08</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="ca_10">
+        <item>10</item>
+        <item>@string/text_view_cat_02</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="opciones_categorias">
+        <item>@string/text_view_cat_00</item>
+        <item>@string/text_view_cat_01</item>
+        <item>@string/text_view_cat_02</item>
+        <item>@string/text_view_cat_03</item>
+        <item>@string/text_view_cat_04</item>
+        <item>@string/text_view_cat_05</item>
+        <item>@string/text_view_cat_06</item>
+        <item>@string/text_view_cat_07</item>
+        <item>@string/text_view_cat_08</item>
+    </string-array>
+    <!--subcategorias -->
+    <string-array name="sca_0">
+        <item>0</item>
+        <item>@string/text_view_sub_00</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="sca_1">
+        <item>1</item>
+        <item>@string/text_view_sub_01</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="sca_2">
+        <item>2</item>
+        <item>@string/text_view_sub_02</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="sca_3">
+        <item>3</item>
+        <item>@string/text_view_sub_03</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="sca_4">
+        <item>4</item>
+        <item>@string/text_view_sub_04</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="sca_5">
+        <item>5</item>
+        <item>@string/text_view_sub_05</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="sca_6">
+        <item>6</item>
+        <item>@string/text_view_sub_06</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="sca_7">
+        <item>7</item>
+        <item>@string/text_view_sub_07</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="sca_8">
+        <item>8</item>
+        <item>@string/text_view_sub_08</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="sca_9">
+        <item>9</item>
+        <item>@string/text_view_sub_09</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="sca_10">
+        <item>10</item>
+        <item>@string/text_view_sub_10</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="sca_11">
+        <item>11</item>
+        <item>@string/text_view_sub_11</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="sca_12">
+        <item>12</item>
+        <item>@string/text_view_sub_12</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="sca_13">
+        <item>13</item>
+        <item>@string/text_view_sub_13</item>
+        <item>9</item>
+    </string-array>
+
+    <string-array name="opciones_subcategorias">
+        <item>@string/text_view_sub_00</item>
+        <item>@string/text_view_sub_01</item>
+        <item>@string/text_view_sub_02</item>
+        <item>@string/text_view_sub_03</item>
+        <item>@string/text_view_sub_04</item>
+        <item>@string/text_view_sub_05</item>
+        <item>@string/text_view_sub_06</item>
+        <item>@string/text_view_sub_07</item>
+        <item>@string/text_view_sub_08</item>
+        <item>@string/text_view_sub_09</item>
+        <item>@string/text_view_sub_10</item>
+        <item>@string/text_view_sub_11</item>
+        <item>@string/text_view_sub_12</item>
+        <item>@string/text_view_sub_13</item>
+    </string-array>
+    <!-- activity_destacados.xml -->
+</resources>

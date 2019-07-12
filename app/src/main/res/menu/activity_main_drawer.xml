@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cursos"
+            android:icon="@drawable/ic_menu_formacion_cursos"
+            android:title="@string/menu_formacion_cursos" />
+        <item
+            android:id="@+id/nav_destacados"
+            android:icon="@drawable/ic_menu_formacion_cursos_destacados"
+            android:title="@string/menu_formacion_cursos_destacados" />
+        <item
+            android:id="@+id/nav_convocatoria"
+            android:icon="@drawable/ic_menu_formacion_cursos_convocatoria"
+            android:title="@string/menu_formacion_cursos_convocatoria" />
+        <item
+            android:id="@+id/nav_consultoria_servicios"
+            android:icon="@drawable/ic_menu_consultoria_servicios"
+            android:title="@string/menu_consultoria_servicios" />
+        <item
+            android:id="@+id/nav_centro_certificador"
+            android:icon="@drawable/ic_menu_centro_certificador"
+            android:title="@string/menu_centro_certificador" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_rrss"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_rrss" />
+            <item
+                android:id="@+id/nav_contacto"
+                android:icon="@drawable/ic_menu_contacto"
+                android:title="@string/menu_contacto" />
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@drawable/ic_menu_info"
+                android:title="@string/menu_info" />
+        </menu>
+    </item>
+
+</menu>
