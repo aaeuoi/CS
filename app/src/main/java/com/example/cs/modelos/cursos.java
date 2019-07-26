@@ -44,23 +44,21 @@ public class cursos {
         String[] r = null;
         curso[] cu = null;
         curso c = null;
-        Date d = null;
         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         for (int i = 0; i < 11; i++) {
 //            int identificador = res.getIdentifier("R.array.cu_" + "i", "array", context.getPackageName());
             r = identificador(i,res,r);
             //r = res.getStringArray(R.array.cu_0);
             try {
-                d = format.parse(r[6]);
                 c = new curso(Integer.parseInt(r[0]), Integer.parseInt(r[1]), Integer.parseInt(r[2]),
                         String.valueOf(r[3]), String.valueOf(r[4]), Integer.parseInt(r[5]),
-                        d, String.valueOf(r[7]), String.valueOf(r[8]), String.valueOf(r[9])
-                        , Integer.parseInt(r[10]), String.valueOf(r[11]), String.valueOf(r[12]),
-                        String.valueOf(r[13]), String.valueOf(r[14]), String.valueOf(r[15]),
-                        String.valueOf(r[16]), String.valueOf(r[17]), String.valueOf(r[18]),
-                        String.valueOf(r[19]), Integer.parseInt(r[20]));
+                        String.valueOf(r[6]), String.valueOf(r[7]), String.valueOf(r[8])
+                        , Integer.parseInt(r[9]), String.valueOf(r[10]), String.valueOf(r[11]),
+                        String.valueOf(r[12]), String.valueOf(r[13]), String.valueOf(r[14]),
+                        String.valueOf(r[15]), String.valueOf(r[16]), String.valueOf(r[17]),
+                        String.valueOf(r[18]), Integer.parseInt(r[19]));
                 cu[i] = c;
-            } catch (ParseException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

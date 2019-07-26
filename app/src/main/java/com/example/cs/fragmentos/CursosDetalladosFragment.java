@@ -1,12 +1,11 @@
 package com.example.cs.fragmentos;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.util.Log;
-
 
 import androidx.fragment.app.Fragment;
 
@@ -23,7 +22,7 @@ import java.util.ArrayList;
  *
  * Clase que infla cada vista (foto), para que sea usada por el FragmentAdaptarFotos
  */
-public class CursosDetailFragment extends Fragment {
+public class CursosDetalladosFragment extends Fragment {
 
     private int id_drawable;
     private ArrayList<cursodetallado> cursos_drawable = new ArrayList<cursodetallado>();
@@ -35,72 +34,45 @@ public class CursosDetailFragment extends Fragment {
     private String categoria;
     private static final String ARG_SUBCAT = "subcategoria";
     private String subcategoria;
-    private static final String ARG_SKU = "sku";
-    private String sku;
     private static final String ARG_NOMBRE = "nombre";
     private String nombre;
     private static final String ARG_DUR = "duracion";
     private String duracion;
     private static final String ARG_INI = "inicio";
     private String inicio;
-    private static final String ARG_FORMATO = "formato";
-    private String formato;
-    private static final String ARG_IDIOMA = "idioma";
-    private String idioma;
     private static final String ARG_MOD = "modalidad";
     private String modalidad;
     private static final String ARG_FAB = "fabricante";
     private String fabricante;
-    private static final String ARG_NIVEL = "nivel";
-    private String nivel;
-    private static final String ARG_OFICIAL = "oficial";
-    private String oficial;
-    private static final String ARG_DOC = "documentacion";
-    private String documentacion;
     private static final String ARG_DESC = "descripcion";
     private String descripcion;
     private static final String ARG_OBJ = "objetivos";
     private String objetivos;
-    private static final String ARG_AUD = "audiencia";
-    private String audiencia;
     private static final String ARG_CON = "contenidos";
     private String contenidos;
-    private static final String ARG_IMA = "image";
-    private String image;
-    private static final String ARG_PDF = "pdf";
-    private String pdf;
     private static final String ARG_DEST = "destacado";
     private String destacado;
 
-    public static CursosDetailFragment newInstance(String area, String cat, String subc, String sku,
-                                                   String nombre, String dur, String inicio,
-                                                   String form, String idio, String mod,
-                                                   String fab, String niv, String ofi, String doc,
-                                                   String desc, String obj, String aud, String con,
-                                                   String ima, String pdf, String dest) {
-        CursosDetailFragment fragment = new CursosDetailFragment();
+    public static CursosDetalladosFragment newInstance(String area, String cat, String subc,
+                                                       String nombre, String dur, String inicio,
+                                                       String mod,
+                                                       String fab,
+                                                       String desc, String obj, String con,
+                                                       String dest) {
+        CursosDetalladosFragment fragment = new CursosDetalladosFragment();
         Bundle args = new Bundle();
 //            args.putInt(ARG_IMAGE, imagen);
         args.putString(ARG_AREA, area);
         args.putString(ARG_CAT, cat);
         args.putString(ARG_SUBCAT, subc);
-        args.putString(ARG_SKU, sku);
         args.putString(ARG_NOMBRE, nombre);
         args.putString(ARG_DUR, dur);
         args.putString(ARG_INI, inicio);
-        args.putString(ARG_FORMATO, form);
-        args.putString(ARG_IDIOMA, idio);
         args.putString(ARG_MOD, mod);
         args.putString(ARG_FAB, fab);
-        args.putString(ARG_NIVEL, niv);
-        args.putString(ARG_OFICIAL, ofi);
-        args.putString(ARG_DOC, doc);
         args.putString(ARG_DESC, desc);
         args.putString(ARG_OBJ, obj);
-        args.putString(ARG_AUD, aud);
         args.putString(ARG_CON, con);
-        args.putString(ARG_IMA, ima);
-        args.putString(ARG_PDF, pdf);
         args.putString(ARG_DEST, dest);
         fragment.setArguments(args);
         fragment.setRetainInstance(true);
@@ -115,23 +87,14 @@ public class CursosDetailFragment extends Fragment {
             area = getArguments().getString(ARG_AREA);
             categoria = getArguments().getString(ARG_CAT);
             subcategoria = getArguments().getString(ARG_SUBCAT);
-            sku = getArguments().getString(ARG_SKU);
             nombre = getArguments().getString(ARG_NOMBRE);
             duracion = getArguments().getString(ARG_DUR);
             inicio = getArguments().getString(ARG_INI);
-            formato = getArguments().getString(ARG_FORMATO);
-            idioma = getArguments().getString(ARG_IDIOMA);
             modalidad = getArguments().getString(ARG_MOD);
             fabricante = getArguments().getString(ARG_FAB);
-            nivel = getArguments().getString(ARG_NIVEL);
-            oficial = getArguments().getString(ARG_OFICIAL);
-            documentacion = getArguments().getString(ARG_DOC);
             descripcion = getArguments().getString(ARG_DESC);
             objetivos = getArguments().getString(ARG_OBJ);
-            audiencia = getArguments().getString(ARG_AUD);
             contenidos = getArguments().getString(ARG_CON);
-            image = getArguments().getString(ARG_IMA);
-            pdf = getArguments().getString(ARG_PDF);
             destacado = getArguments().getString(ARG_DEST);
         }
     }
@@ -146,7 +109,7 @@ public class CursosDetailFragment extends Fragment {
 //        id_drawable = args.getInt("N_FOTO");
     }
 
-    public CursosDetailFragment() {
+    public CursosDetalladosFragment() {
         // constructor por defecto, requerido
     }
 
@@ -157,7 +120,7 @@ public class CursosDetailFragment extends Fragment {
         View rootView = null;
 
         try {
-            rootView = (View) inflater.inflate(R.layout.no_used_fragment_cursos, container, false);
+            rootView = (View) inflater.inflate(R.layout.fragment_cursos1, container, false);
 
 //            ImageView imagenView = (ImageView) rootView.findViewById(R.id.imageView1);
 //            imagenView.setImageResource(imagen);
@@ -167,42 +130,24 @@ public class CursosDetailFragment extends Fragment {
             textView1.setText(categoria);
             TextView textView2 =  rootView.findViewById(R.id.detalles_subcategoria);
             textView2.setText(subcategoria);
-            TextView textView3 =  rootView.findViewById(R.id.detalles_sku);
-            textView3.setText(sku);
-            TextView textView4 =  rootView.findViewById(R.id.detalles_nombre);
-            textView4.setText(nombre);
-            TextView textView5 =  rootView.findViewById(R.id.detalles_duracion);
-            textView5.setText(duracion);
-            TextView textView6 =  rootView.findViewById(R.id.detalles_inicio);
-            textView6.setText(inicio);
-            TextView textView7 =  rootView.findViewById(R.id.detalles_formato);
-            textView7.setText(formato);
-            TextView textView8 =  rootView.findViewById(R.id.detalles_idioma);
-            textView8.setText(idioma);
-            TextView textView9 =  rootView.findViewById(R.id.detalles_modalidad);
-            textView9.setText(modalidad);
-            TextView textView10 =  rootView.findViewById(R.id.detalles_fabricante);
-            textView10.setText(fabricante);
-            TextView textView11 =  rootView.findViewById(R.id.detalles_nivel);
-            textView11.setText(nivel);
-            TextView textView12 =  rootView.findViewById(R.id.detalles_oficial);
-            textView12.setText(oficial);
-            TextView textView13 =  rootView.findViewById(R.id.detalles_documentacion);
-            textView13.setText(documentacion);
-            TextView textView14 =  rootView.findViewById(R.id.detalles_descripcion);
-            textView14.setText(descripcion);
-            TextView textView15 =  rootView.findViewById(R.id.detalles_objetivos);
-            textView15.setText(objetivos);
-            TextView textView16 =  rootView.findViewById(R.id.detalles_audiencia);
-            textView16.setText(audiencia);
-            TextView textView17 =  rootView.findViewById(R.id.detalles_contenidos);
-            textView17.setText(contenidos);
-            TextView textView18 =  rootView.findViewById(R.id.detalles_image);
-            textView18.setText(image);
-            TextView textView19 =  rootView.findViewById(R.id.detalles_pdf);
-            textView19.setText(pdf);
-            TextView textView20 =  rootView.findViewById(R.id.detalles_destacado);
-            textView20.setText(destacado);
+            TextView textView3 =  rootView.findViewById(R.id.detalles_nombre);
+            textView3.setText(nombre);
+            TextView textView4 =  rootView.findViewById(R.id.detalles_duracion);
+            textView4.setText(duracion);
+            TextView textView5 =  rootView.findViewById(R.id.detalles_inicio);
+            textView5.setText(inicio);
+            TextView textView6 =  rootView.findViewById(R.id.detalles_modalidad);
+            textView6.setText(modalidad);
+            TextView textView7 =  rootView.findViewById(R.id.detalles_fabricante);
+            textView7.setText(fabricante);
+            TextView textView8 =  rootView.findViewById(R.id.detalles_descripcion);
+            textView8.setText(descripcion);
+            TextView textView9 =  rootView.findViewById(R.id.detalles_objetivos);
+            textView9.setText(objetivos);
+            TextView textView10 =  rootView.findViewById(R.id.detalles_contenidos);
+            textView10.setText(contenidos);
+            TextView textView11 =  rootView.findViewById(R.id.detalles_destacado);
+            textView11.setText(destacado);
 /*
             Group imageView = rootView.findViewById(R.id.content);
             Drawable drawable = getResources().getDrawable(this.id_drawable);

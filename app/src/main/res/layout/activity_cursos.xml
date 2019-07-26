@@ -124,7 +124,11 @@
                 android:id="@+id/in_curso_nombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_nombre" />
+                android:focusableInTouchMode="true"
+                android:cursorVisible="false"
+                android:hint="@string/hint_nombre"/>
+                <!--android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
+                /-->
         </FrameLayout>
         <FrameLayout
             android:layout_width="match_parent"
@@ -147,8 +151,29 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/pagercursos"
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
+                android:layout_height="0dp"
                 tools:context=".actividades.CursosActivity" />
+            <Button
+                android:id="@+id/button_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/text_buttom_up"
+                android:background="@color/colorBlueLight"
+                android:text="@string/text_buttom_up"/>
+                <!--android:onClick="verResto"/-->
+            <ListView
+                android:id="@+id/listView1"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:layout_gravity="center_horizontal" />
+            <Button
+                android:id="@+id/button_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/text_buttom_down"
+                android:background="@color/colorBlueLight"
+                android:text="@string/text_buttom_down"/>
+                <!--android:onClick="verResto"/-->
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

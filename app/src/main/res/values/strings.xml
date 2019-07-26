@@ -114,6 +114,11 @@
 
     <string name="text_view_cursos">"Cursos"</string>
     <string name="text_buttom_buscar">"Buscar"</string>
+    <string name="text_buttom_ver">"Ver"</string>
+    <string name="text_buttom_up">"Atrás"</string>
+    <string name="text_buttom_down">"Adelante"</string>
+    <string name="text_buttom_cambiar">"Cambiar"</string>
+    <string name="text_buttom_volver">"Volver"</string>
     <string name="image_find">"Find Button"</string>
     <!-- tit_cursos_campos -->
     <string name="tit_curso_area">"Área:"</string>
@@ -137,8 +142,10 @@
     <string name="tit_curso_imagen">"Imagen:"</string>
     <string name="tit_curso_pdf_curso">"PDF:"</string>
     <string name="tit_curso_destacado">"Destacado:"</string>
+    <string name="tit_curso_destacados">"Destacados:"</string>
     <string name="tit_curso_info_contacto">"Teléfono:"</string>
     <string name="tit_curso_direccion">"Dirección:"</string>
+    <string name="tit_de">"_de_"</string>
     <!-- cursos_campos -->
     <string name="curso_area">"area:"</string>
     <string name="curso_categoria">"categoria"</string>
@@ -186,4 +193,5 @@
     <string name="tit_bbdd_nombre">"Nombre:"</string>
 
     <string name="hint_nombre">"nombre curso"</string>
+    <string name="title_activity_next">NextActivity</string>
 </resources>

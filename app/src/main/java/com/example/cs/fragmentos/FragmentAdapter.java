@@ -22,8 +22,8 @@ import java.util.List;
 
 public class FragmentAdapter extends FragmentPagerAdapter {
 
-    private cursos array_cursos_actual ;
-    public curso[] array_curso_actual ;
+//    private cursos array_cursos_actual ;
+//    public curso[] array_curso_actual ;
 
     List<Fragment> fragmentos;
     public FragmentAdapter(FragmentManager fm) {
@@ -46,12 +46,13 @@ public class FragmentAdapter extends FragmentPagerAdapter {
         return fragmentos.size();
     }
 
-
+/*
     public void setCursos()
     {
         array_cursos_actual.setCursos();
         array_curso_actual = array_cursos_actual.getCurso();
     }
+    */
 /*
     @Override
     public Fragment getItem(int i) {

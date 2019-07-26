@@ -6,7 +6,8 @@ public class convocatoria {
     // Datos de la tabla convocatoria
     protected int    id;// pku
     protected String cas_sku;
-    protected Date   cas_inicio;//del curso
+    protected String   cas_inicio;//del curso
+    //    protected Date   cas_inicio;//del curso
     protected String cas_horario;
     protected String cas_lugar; // dónde se imparte el curso
     protected String cas_modalidad;
@@ -15,7 +16,8 @@ public class convocatoria {
         super();
     }
 
-    public convocatoria(int v0, String v1, Date v2, String v3, String v4, String v5) {
+    //    public convocatoria(int v0, String v1, Date v2, String v3, String v4, String v5) {
+    public convocatoria(int v0, String v1, String v2, String v3, String v4, String v5) {
         super();
         this.id = v0;
         this.cas_sku = v1;
@@ -41,11 +43,13 @@ public class convocatoria {
         this.cas_sku = sku;
     }
 
-    public Date getInicio() {
+    //    public Date getInicio() {
+    public String getInicio() {
         return cas_inicio;
     }
 
-    public void setInicio(Date inicio) {
+    //    public void setInicio(Date inicio) {
+    public void setInicio(String inicio) {
         this.cas_inicio = inicio;
     }
 

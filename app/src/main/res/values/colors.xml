@@ -31,5 +31,5 @@
     <color name="colorGrayLight">#E7E6E6</color>
     <color name="colorGray">#d7d6d6</color>
     <color name="colorGrayDark">#888888</color>
-    <color name="colorBack">#000702</color>
+    <color name="colorBlack">#000702</color>
 </resources>

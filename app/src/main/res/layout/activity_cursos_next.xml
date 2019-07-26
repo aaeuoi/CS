@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".actividades.DestacadosActivity">
+    tools:context=".actividades.NextCursosActivity">
 
     <!-- PADRE -->
     <LinearLayout
-        android:id="@+id/linealdestacados"
+        android:id="@+id/linealconvocatoria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -18,10 +18,11 @@
             android:orientation="vertical">
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/pagerdestacados"
+                android:id="@+id/pagertexto"
                 android:layout_width="match_parent"
                 android:layout_height="1000dp"
-                tools:context=".actividades.DestacadosActivity" />
+                tools:context=".actividades.NextCursosActivity" />
         </LinearLayout>
     </LinearLayout>
+    <!--FIN PADRE -->
 </ScrollView>

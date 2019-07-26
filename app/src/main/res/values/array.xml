@@ -1,16 +1,16 @@
 <resources>
     <!--cursos -->
+    <!--cursos -->
     <string-array name="cu_0">
         <item>6</item>
         <item>0</item>
         <item>0</item>
-        <item>0</item>
+        <item>"0"</item>
         <item>"Big Data. Desarrollo y Aplicaciones"</item>
         <item>99</item>
-        <item>"2019/09/21"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
         <item>4</item>
         <item>"Experto"</item>
         <item>"Development Title"</item>
@@ -27,13 +27,12 @@
         <item>0</item>
         <item>6</item>
         <item>0</item>
-        <item>1</item>
+        <item>"1"</item>
         <item>"Programación con ActionScript"</item>
         <item>100</item>
-        <item>"2019/07/01"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
         <item>0</item>
         <item>"Experto"</item>
         <item>"Devlopment Title"</item>
@@ -50,13 +49,12 @@
         <item>0</item>
         <item>6</item>
         <item>0</item>
-        <item>2</item>
+        <item>"2"</item>
         <item>"Programación con ActionScript"</item>
         <item>100</item>
-        <item>"2019/07/01"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
         <item>0</item>
         <item>"Experto"</item>
         <item>"Devlopment Title"</item>
@@ -73,13 +71,12 @@
         <item>6</item>
         <item>1</item>
         <item>10</item>
-        <item>3</item>
+        <item>"3"</item>
         <item>"Administración de la Base de Datos Oracle v.12c"</item>
         <item>126</item>
-        <item>"2019/09/15"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Telepresencial"</item>
         <item>12</item>
         <item>"Experto"</item>
         <item>"Development Title"</item>
@@ -96,13 +93,12 @@
         <item>0</item>
         <item>6</item>
         <item>0</item>
-        <item>4</item>
+        <item>"4"</item>
         <item>"Programación con ActionScript"</item>
         <item>100</item>
-        <item>"2019/07/01"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
         <item>0</item>
         <item>"Experto"</item>
         <item>"Development Title"</item>
@@ -119,13 +115,12 @@
         <item>6</item>
         <item>4</item>
         <item>11</item>
-        <item>5</item>
+        <item>"5"</item>
         <item>"Desarrollo FrontEnd con Angular"</item>
         <item>48</item>
-        <item>"2019/09/11"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
         <item>17</item>
         <item>"Experto"</item>
         <item>"Development Title"</item>
@@ -142,13 +137,12 @@
         <item>0</item>
         <item>6</item>
         <item>0</item>
-        <item>6</item>
+        <item>"6"</item>
         <item>"Programación con ActionScript"</item>
         <item>100</item>
-        <item>"2019/07/01"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
         <item>0</item>
         <item>"Experto"</item>
         <item>"Devlopment Title"</item>
@@ -165,13 +159,12 @@
         <item>0</item>
         <item>6</item>
         <item>0</item>
-        <item>7</item>
+        <item>"7"</item>
         <item>"Programación con ActionScript"</item>
         <item>100</item>
-        <item>"2019/07/01"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
         <item>0</item>
         <item>"Experto"</item>
         <item>"Development Title"</item>
@@ -188,13 +181,12 @@
         <item>6</item>
         <item>10</item>
         <item>12</item>
-        <item>8</item>
+        <item>"8"</item>
         <item>"ITIL Foundation Certificate in IT Service Managment"</item>
         <item>20</item>
-        <item>"2019/10/01"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
         <item>18</item>
         <item>"Experto"</item>
         <item>"Development Title"</item>
@@ -211,13 +203,12 @@
         <item>0</item>
         <item>6</item>
         <item>0</item>
-        <item>9</item>
+        <item>"9"</item>
         <item>"Programación con ActionScript"</item>
         <item>100</item>
-        <item>"2019/07/01"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
         <item>0</item>
         <item>"Experto"</item>
         <item>"Devlopment Title"</item>
@@ -234,13 +225,12 @@
         <item>6</item>
         <item>9</item>
         <item>13</item>
-        <item>10</item>
+        <item>"10"</item>
         <item>"Certificación LINUX LPIC-1 y LPIC-2"</item>
         <item>80</item>
-        <item>"2019/09/01"</item>
         <item>"Formato"</item>
         <item>"Español"</item>
-        <item>0</item>
+        <item>"Online"</item>
         <item>10</item>
         <item>"Experto"</item>
         <item>"Development Title"</item>
@@ -255,45 +245,45 @@
     </string-array>
 
     <!--convocatorias -->
-    <string-array name="des_0">
+    <string-array name="con_0">
         <item>0</item>
-        <item>0</item>
+        <item>"0"</item>
         <item>"2019/07/01"</item>
         <item>"Lunes a Viernes de 09:00-14:00"</item>
         <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
     </string-array>
-    <string-array name="des_1">
+    <string-array name="con_1">
         <item>1</item>
-        <item>3</item>
+        <item>"3"</item>
         <item>"2019/07/01"</item>
         <item>"Lunes a Viernes de 09:00-14:00"</item>
         <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
-        <item>1</item>
+        <item>"Telepresencial"</item>
     </string-array>
-    <string-array name="des_2">
+    <string-array name="con_2">
         <item>2</item>
-        <item>5</item>
+        <item>"5"</item>
         <item>"2019/10/01"</item>
         <item>"Lunes a Viernes de 09:00-14:00"</item>
         <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
     </string-array>
-    <string-array name="des_3">
+    <string-array name="con_3">
         <item>3</item>
-        <item>8</item>
+        <item>"8"</item>
         <item>"2019/08/01"</item>
         <item>"Lunes a Viernes de 09:00-14:00"</item>
         <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
-        <item>0</item>
+        <item>"Presencial"</item>
     </string-array>
-    <string-array name="des_4">
+    <string-array name="con_4">
         <item>4</item>
-        <item>10</item>
+        <item>"10"</item>
         <item>"2019/09/01"</item>
         <item>"Viernes a Sabado de 09:00-14:00 15:00-20:00"</item>
         <item>"Cas Training, C/Basilica, 5, 8 planta, Madrid 28003"</item>
-        <item>0</item>
+        <item>"Online"</item>
     </string-array>
     <!--fabricantes -->
     <string-array name="f_0">
@@ -374,6 +364,7 @@
     </string-array>
 
     <string-array name="opciones_fabricantes">
+        <item>"TODOS"</item>
         <item>@string/text_view_fab_00</item>
         <item>@string/text_view_fab_01</item>
         <item>@string/text_view_fab_02</item>
@@ -409,6 +400,7 @@
     </string-array>
 
     <string-array name="opciones_modalidades">
+        <item>"TODAS"</item>
         <item>@string/text_view_mod_00</item>
         <item>@string/text_view_mod_01</item>
         <item>@string/text_view_mod_02</item>
@@ -448,6 +440,7 @@
     </string-array>
 
     <string-array name="opciones_areas">
+        <item>"TODAS"</item>
         <item>@string/text_view_are_00</item>
         <item>@string/text_view_are_01</item>
         <item>@string/text_view_are_02</item>
@@ -515,6 +508,7 @@
     </string-array>
 
     <string-array name="opciones_categorias">
+        <item>"TODAS"</item>
         <item>@string/text_view_cat_00</item>
         <item>@string/text_view_cat_01</item>
         <item>@string/text_view_cat_02</item>
@@ -598,6 +592,7 @@
     </string-array>
 
     <string-array name="opciones_subcategorias">
+        <item>"TODAS"</item>
         <item>@string/text_view_sub_00</item>
         <item>@string/text_view_sub_01</item>
         <item>@string/text_view_sub_02</item>
@@ -613,5 +608,4 @@
         <item>@string/text_view_sub_12</item>
         <item>@string/text_view_sub_13</item>
     </string-array>
-    <!-- activity_destacados.xml -->
 </resources>

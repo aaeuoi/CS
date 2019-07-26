@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.Manifest;
-import android.content.pm.ActivityInfo;
 import android.media.audiofx.Visualizer;
 import android.net.Uri;
 import android.util.Log;
@@ -18,33 +18,49 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cs.MainActivity;
 import com.example.cs.R;
-import com.example.cs.fragmentos.CursosDetailFragment;
+import com.example.cs.bbdd.DatabaseHandler;
+import com.example.cs.fragmentos.CursosListAdapter;
+import com.example.cs.fragmentos.CursosDetalladosFragment;
 import com.example.cs.fragmentos.FragmentAdapter;
+import com.example.cs.modelos.area;
+import com.example.cs.modelos.categoria;
+import com.example.cs.modelos.convocatoria;
 import com.example.cs.modelos.curso;
+import com.example.cs.modelos.cursodetallado;
 import com.example.cs.modelos.cursos;
+import com.example.cs.modelos.fabricante;
+import com.example.cs.modelos.modalidad;
+import com.example.cs.modelos.subcategoria;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.EmptyStackException;
+import java.util.List;
+
+import static java.lang.Integer.parseInt;
 
 public class CursosActivity extends AppCompatActivity {
 
+    public static DatabaseHandler dbh;
     private Context mContext;
 
     public Context getmContext() {
         return mContext;
     }
 
-    private Button b_play;
+    private Button b_buscar;
+    private Button b_anterior;
+    private Button b_posterior;
+    private Button b_ver;
     //    private Button b_start;
-    private ImageButton ib_play_pause;
-    private ImageButton ib_play_pause_01;
-    private ImageButton ib_play_pause_02;
-    private ImageButton ib_play_pause_03;
-    private ImageButton ib_play_pause_04;
-    private ImageButton ib_play_pause_05;
-    private Button b_end;
     private TextView tv_estado;
     private Spinner spinner_01;
     private Spinner spinner_02;
@@ -53,12 +69,12 @@ public class CursosActivity extends AppCompatActivity {
     private Spinner spinner_05;
 
     private Uri uri;
-    //private PlayerTask playerTask;
-    private String [] fabricantes;
-    private String [] areas;
-    private String [] categorias;
-    private String [] subcategorias;
-    private String [] modalidades;
+    //private PlayerTask buscarerTask;
+    private String [] stringsFabricantes;
+    private String [] stringsAreas;
+    private String [] stringsCategorias;
+    private String [] stringsSubcategorias;
+    private String [] stringsModalidades;
 
     private boolean prepared = false;
     private boolean started = false;
@@ -78,11 +94,13 @@ public class CursosActivity extends AppCompatActivity {
 //    private RadioButton mRadioButton;
 
     private int vis = 0;
-    private String fabricante;
-    private String area;
-    private String categoria;
-    private String subcategoria;
-    private String modalidad;
+    private String stringFabricante;
+    private String stringArea;
+    private String stringCategoria;
+    private String stringSubcategoria;
+    private String stringModalidad;
+    private String inicio;
+    private String detallado;
     //private String stream;
     //private String stream = "http://provisioning.streamtheworld.com/pls/M80RADIO.pls"; // M80 Pop
 
@@ -90,11 +108,6 @@ public class CursosActivity extends AppCompatActivity {
 
     private static final float VISUALIZER_HEIGHT_DIP = 50f;
 
-    private LinearLayout mLinearLayoutEqualizer;
-    //    private LinearLayout mLinearLayoutFrequency;
-//    private LinearLayout mLinearLayoutVisualizer;
-    private Visualizer mVisualizer;
-//    private VisualizerView mVisualizerView;
 
     private float density = 70f;
     //    private float volLeft = 0f;
@@ -104,157 +117,40 @@ public class CursosActivity extends AppCompatActivity {
     private TextView mStatusTextView;
 
 
-    // private View myView;
-    //private View eqview;
-    //private View fftview;
-    //private ImageButton imageButton;
     private Button submit;
 
     // BaseActivity
-    public static final int AUDIO_PERMISSION_REQUEST_CODE = 102;
-
-    public static final String[] WRITE_EXTERNAL_STORAGE_PERMS = {
-            Manifest.permission.RECORD_AUDIO
-    };
     private boolean botonInformacion;
 
-    private static curso cur;
-    private static cursos curs ;
+    private static int ini=0;
+    private static int iniAnt=0;
+    private static int cont=0;
+    private static String nombreBuscar ;
 
-    String[] sugerencias = {
-            "Los más destacados:",
-            "Últimas convocatorias:",
-            "Certificaciones en:",
-            "Consultoría y Servicios disponibles:"
-    };
+    private ArrayList<area> arrayArea = new ArrayList<area>();
+    private ArrayList<categoria> arrayCategoria = new ArrayList<categoria>();
+    private ArrayList<convocatoria> arrayConvocatoria = new ArrayList<convocatoria>();
+    private ArrayList<curso> arrayCurso = new ArrayList<curso>();
+    public static ArrayList<cursodetallado> arrayCursodetallado = new ArrayList<cursodetallado>();
+    public static ArrayList<cursodetallado> arrayCursodetalladoView = new ArrayList<cursodetallado>();
+    private ArrayList<fabricante> arrayFabricante = new ArrayList<fabricante>();
+    private ArrayList<modalidad> arrayModalidad = new ArrayList<modalidad>();
+    private ArrayList<subcategoria> arraySubcategoria = new ArrayList<subcategoria>();
+    private List<String> arrayLabels = null;
 
-    String[] v00 = {
-            "Cursos 01",
-            "Cursos 02",
-            "Cursos 03"
-    };
+    public static int arrayPosicion = 0;
+    public static int arrayPosicionReal = 0;
+    public static int arrayPosicionFin = 0;
+    public static String arrayDescripcion = "";
+    public static String arrayObjetivos = "";
+    public static String arrayContenidos = "";
+    public static String arraySku = "";
+    public static String arrayNombre = "";
 
-    String[] v01 = {
-            "tiburon11",
-            "tiburon12",
-            "tiburon21"
-    };
-
-    String[] v02 = {
-            "tiburon11",
-            "tiburon12",
-            "tiburon21"
-    };
-
-    String[] v03 = {
-            "tiburon11",
-            "tiburon12",
-            "tiburon21"
-    };
-
-    String[] v04 = {
-            "tiburon11",
-            "tiburon12",
-            "tiburon21"
-    };
-
-    String[] v05 = {
-            "tiburon11",
-            "tiburon12",
-            "tiburon21"
-    };
-
-    String[] v06 = {
-            "tiburon11",
-            "tiburon12",
-            "tiburon21"
-    };
-    String[] v07 = {
-            "formato11",
-            "formato12",
-            "formato21"
-    };
-    String[] v08 = {
-            "idioma11",
-            "idioma12",
-            "idioma21"
-    };
-    String[] v09 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-    String[] v10 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-    String[] v11 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-    String[] v12 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-    String[] v13 = {
-            "documentacion11_kmjggfgg_kmfmrfm_ddfgtkmgvmmgf_mgbmvbmgvbb_mvgbmgvmvfvmed_mmmmm_" +
-                    "_mv_m_m_,mlfflgfewgergoearpgrog_kvvfkvovkvvkvkvkopxk_bkbkbkbkbkbkbkb__" +
-                    "knnsknkbnks.",
-            "documentacion12_quhgeu__hgbwooikb_jgoqi_jgftgioq_ifoe_ikjgvigjg_jiosjgb_igoas_" +
-                    "a_nn__oggbnn_gngwbo_ggfng_whhhwhrwrtn_nthbowsnb_ngbgohohghhhi_nnnnnnnn.",
-            "documentacion21_bjbwjbjbj_jegbrtjwihog_jgoiwbhjg_gbwjiiiiiiohb_jgjsoij_gboihbgh" +
-                    "ms_gogn_n_itoa_jio_ii_j_ioi_ooooooooo_io_iji_oooooooooooooooooooooo_ikio_" +
-                    "nnio_io_iio_ioooooooooooooooooooooooooooo_jiooooooooooooooooooooooo_iooooooo"+
-                    "jiooooooooooooio"
-    };
-    String[] v14 = {
-            "descripcion11_kmjggfgg_kmfmrfm_ddfgtkmgvmmgf_mgbmvbmgvbb_mvgbmgvmvfvmed_mmmmm_" +
-                    "_mv_m_m_,mlfflgfewgergoearpgrog_kvvfkvovkvvkvkvkopxk_bkbkbkbkbkbkbkb__" +
-                    "knnsknkbnks.",
-            "descripcion12_quhgeu__hgbwooikb_jgoqi_jgftgioq_ifoe_ikjgvigjg_jiosjgb_igoas_" +
-                    "a_nn__oggbnn_gngwbo_ggfng_whhhwhrwrtn_nthbowsnb_ngbgohohghhhi_nnnnnnnn.",
-            "descripcion21_bjbwjbjbj_jegbrtjwihog_jgoiwbhjg_gbwjiiiiiiohb_jgjsoij_gboihbgh" +
-                    "ms_gogn_n_itoa_jio_ii_j_ioi_ooooooooo_io_iji_oooooooooooooooooooooo_ikio_" +
-                    "nnio_io_iio_ioooooooooooooooooooooooooooo_jiooooooooooooooooooooooo_iooooooo"+
-                    "jiooooooooooooio"
-    };
-    String[] v15 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-    String[] v16 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-    String[] v17 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-    String[] v18 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-    String[] v19 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-    String[] v20 = {
-            "nivel11",
-            "nivel12",
-            "nivel21"
-    };
-
-    public FragmentAdapter adapterCursos;
-    public ViewPager mViewPager;
-
+    public FragmentAdapter pagerAdapter;
+    public ViewPager viewPager;
+    public ListView lista;
+    public CursosListAdapter adapterCudet;
 //    Context context = null;
 /*
     public static curso getCursoActual ()
@@ -273,10 +169,27 @@ public class CursosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
+            ini = 0;
+            iniAnt = 0;
+            cont = 0;
             // pantalla solo horizontal OK
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             setContentView(R.layout.activity_cursos);
+            lista = findViewById(R.id.listView1);
+
 //            context = this.context;
+// load resources
+            dbh = MainActivity.dbh;
+            arrayArea = dbh.getAllvaluesAr();
+            arrayCategoria = dbh.getAllvaluesCa();
+            arraySubcategoria = dbh.getAllvaluesSu();
+            arrayFabricante = dbh.getAllvaluesFa();
+            arrayConvocatoria = dbh.getAllvaluesCo();
+            arrayCurso = dbh.getAllvaluesCu();
+            arrayModalidad = dbh.getAllvaluesMo();
+
+
+// fin load resources
 /*
 // BaseActivity
             if (getLayout() != 0) {
@@ -295,20 +208,25 @@ public class CursosActivity extends AppCompatActivity {
             //frequencyAdapter.setDropDownViewResource(android.R.layout.expandable_list_content);
             // spinner
             // 01 fabricantes
-            //ib_play_pause_01 = (ImageButton)findViewById(R.id.image_button_buscar_01);
+            //ib_buscar_pause_01 = (ImageButton)findViewById(R.id.image_button_buscar_01);
             spinner_01 = (Spinner)findViewById(R.id.action_bar_spinner_fabricante);
-            ArrayAdapter<CharSequence> adapter01 = ArrayAdapter.createFromResource(this, R.array.opciones_fabricantes, android.R.layout.simple_spinner_item);
-            adapter01.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            arrayLabels = dbh.getAllFa();
+            ArrayAdapter<String> adapter01 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayLabels);
+            adapter01.setDropDownViewResource(R.layout.textview_with_background);
             spinner_01.setAdapter(adapter01);
             //spinner.setOnItemSelectedListener(this) ;
-            fabricantes = getResources().getStringArray(R.array.opciones_fabricantes);
+            stringsFabricantes = new String[arrayLabels.size()];
+            for (int i=0;i<arrayLabels.size();i++) {
+                stringsFabricantes[i] = arrayLabels.get(i);
+            }
+//            stringsFabricantes = getResources().getStringArray(R.array.opciones_fabricantes);
             spinner_01.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     //Object item = parent.getItemAtPosition(position);
                     String text = parent.getItemAtPosition(position).toString();
-                    Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
                     //stream = urls[position];
-                    fabricante = fabricantes[position];
+                    stringFabricante = stringsFabricantes[position];
                     checked_01 = true;
 
                 }
@@ -318,20 +236,25 @@ public class CursosActivity extends AppCompatActivity {
             });
             // 02 areas
             // image button
-            //ib_play_pause_02 = (ImageButton)findViewById(R.id.image_button_buscar_02);
+            //ib_buscar_pause_02 = (ImageButton)findViewById(R.id.image_button_buscar_02);
             spinner_02 = (Spinner)findViewById(R.id.action_bar_spinner_area);
-            ArrayAdapter<CharSequence> adapter02 = ArrayAdapter.createFromResource(this, R.array.opciones_areas, android.R.layout.simple_spinner_item);
-            adapter02.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            arrayLabels = dbh.getAllAr();
+            ArrayAdapter<String> adapter02 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayLabels);
+            adapter02.setDropDownViewResource(R.layout.textview_with_background0);
             spinner_02.setAdapter(adapter02);
             //spinner.setOnItemSelectedListener(this) ;
-            areas = getResources().getStringArray(R.array.opciones_areas);
+            stringsAreas = new String[arrayLabels.size()];
+            for (int i=0;i<arrayLabels.size();i++) {
+                stringsAreas[i] = arrayLabels.get(i);
+            }
+            //stringsAreas = getResources().getStringArray(R.array.opciones_areas);
             spinner_02.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     //Object item = parent.getItemAtPosition(position);
                     String text = parent.getItemAtPosition(position).toString();
                     //Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
                     //stream = urls[position];
-                    area = areas[position];
+                    stringArea = stringsAreas[position];
                     checked_02 = true;
 
                 }
@@ -340,20 +263,26 @@ public class CursosActivity extends AppCompatActivity {
                 }
             });
             // 03 categorias
-            //ib_play_pause_03 = (ImageButton)findViewById(R.id.image_button_buscar_03);
+            //ib_buscar_pause_03 = (ImageButton)findViewById(R.id.image_button_buscar_03);
             spinner_03 = (Spinner)findViewById(R.id.action_bar_spinner_categoria);
-            ArrayAdapter<CharSequence> adapter03 = ArrayAdapter.createFromResource(this, R.array.opciones_categorias, android.R.layout.simple_spinner_item);
-            adapter03.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            arrayLabels = dbh.getAllCa();
+            ArrayAdapter<String> adapter03 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayLabels);
+//            ArrayAdapter<CharSequence> adapter03 = ArrayAdapter.createFromResource(this, R.array.opciones_categorias, R.layout.textview_with_background);
+            adapter03.setDropDownViewResource(R.layout.textview_with_background);
             spinner_03.setAdapter(adapter03);
             //spinner.setOnItemSelectedListener(this) ;
-            categorias = getResources().getStringArray(R.array.opciones_categorias);
+            stringsCategorias = new String[arrayLabels.size()];
+            for (int i=0;i<arrayLabels.size();i++) {
+                stringsCategorias[i] = arrayLabels.get(i);
+            }
+//            stringsCategorias = getResources().getStringArray(R.array.opciones_categorias);
             spinner_03.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     //Object item = parent.getItemAtPosition(position);
                     String text = parent.getItemAtPosition(position).toString();
-                    Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
                     //stream = urls[position];
-                    categoria = categorias[position];
+                    stringCategoria = stringsCategorias[position];
                     checked_03 = true;
 
                 }
@@ -362,20 +291,26 @@ public class CursosActivity extends AppCompatActivity {
                 }
             });
             // 03 subcategorias
-            //ib_play_pause_04 = (ImageButton)findViewById(R.id.image_button_buscar_04);
+            //ib_buscar_pause_04 = (ImageButton)findViewById(R.id.image_button_buscar_04);
             spinner_04 = (Spinner)findViewById(R.id.action_bar_spinner_subcategoria);
-            ArrayAdapter<CharSequence> adapter04 = ArrayAdapter.createFromResource(this, R.array.opciones_subcategorias, android.R.layout.simple_spinner_item);
-            adapter04.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            arrayLabels = dbh.getAllSu();
+            ArrayAdapter<String> adapter04 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayLabels);
+//            ArrayAdapter<CharSequence> adapter04 = ArrayAdapter.createFromResource(this, R.array.opciones_subcategorias, R.layout.textview_with_background0);
+            adapter04.setDropDownViewResource(R.layout.textview_with_background0);
             spinner_04.setAdapter(adapter04);
             //spinner.setOnItemSelectedListener(this) ;
-            subcategorias = getResources().getStringArray(R.array.opciones_subcategorias);
+            stringsSubcategorias = new String[arrayLabels.size()];
+            for (int i=0;i<arrayLabels.size();i++) {
+                stringsSubcategorias[i] = arrayLabels.get(i);
+            }
+//            stringsSubcategorias = getResources().getStringArray(R.array.opciones_subcategorias);
             spinner_04.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     //Object item = parent.getItemAtPosition(position);
                     String text = parent.getItemAtPosition(position).toString();
-                    Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
                     //stream = urls[position];
-                    subcategoria = subcategorias[position];
+                    stringSubcategoria = stringsSubcategorias[position];
                     checked_04 = true;
 
                 }
@@ -383,21 +318,26 @@ public class CursosActivity extends AppCompatActivity {
                     checked_04 = false;
                 }
             });
-            // 03 modalidads
-            //ib_play_pause_05 = (ImageButton)findViewById(R.id.image_button_buscar_05);
             spinner_05 = (Spinner)findViewById(R.id.action_bar_spinner_modalidad);
-            ArrayAdapter<CharSequence> adapter05 = ArrayAdapter.createFromResource(this, R.array.opciones_modalidades, android.R.layout.simple_spinner_item);
-            adapter05.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            arrayLabels = dbh.getAllMo();
+            ArrayAdapter<String> adapter05 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayLabels);
+//            ArrayAdapter<CharSequence> adapter05 = ArrayAdapter.createFromResource(this, R.array.opciones_modalidades, R.layout.textview_with_background);
+//            adapter05.setDropDownViewResource(android.R.layout.simple_spinner_item);
+            adapter05.setDropDownViewResource(R.layout.textview_with_background);
             spinner_05.setAdapter(adapter05);
             //spinner.setOnItemSelectedListener(this) ;
-            modalidades = getResources().getStringArray(R.array.opciones_modalidades);
+            stringsModalidades = new String[arrayLabels.size()];
+            for (int i=0;i<arrayLabels.size();i++) {
+                stringsModalidades[i] = arrayLabels.get(i);
+            }
+//            stringsModalidades = getResources().getStringArray(R.array.opciones_modalidades);
             spinner_05.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     //Object item = parent.getItemAtPosition(position);
                     String text = parent.getItemAtPosition(position).toString();
-                    Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
                     //stream = urls[position];
-                    modalidad = modalidades[position];
+                    stringModalidad = stringsModalidades[position];
                     checked_05 = true;
 
                 }
@@ -406,63 +346,152 @@ public class CursosActivity extends AppCompatActivity {
                 }
             });
             // otras variables de control
-            b_play = (Button) findViewById(R.id.button_buscar);
-            b_play.setEnabled(true);
+            b_buscar = (Button) findViewById(R.id.button_buscar);
+            b_buscar.setEnabled(true);
+            b_anterior = (Button) findViewById(R.id.button_up);
+            b_anterior.setEnabled(true);
+            b_anterior.setVisibility(View.INVISIBLE);
+            b_posterior = (Button) findViewById(R.id.button_down);
+            b_posterior.setEnabled(true);
+            b_posterior.setVisibility(View.INVISIBLE);
+//            b_ver = (Button) findViewById(R.id.button_ver);
+//            b_ver.setEnabled(true);
 
 /*            ListView lista = (ListView) findViewById(R.id.listView1);
 
             ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, sugerencias);
             lista.setAdapter(adapter);
 */
-            //galeria de imagenes y nombres
-
-            adapterCursos = new FragmentAdapter(getSupportFragmentManager());
-
-            mViewPager = findViewById(R.id.pagercursos);
-            adapterCursos.agregarFragmentos(CursosDetailFragment.newInstance(v00[0],v01[0],v02[0],
-                    v03[0],v04[0],v05[0],v06[0],v07[0],v08[0],v09[0],v10[0],v11[0],v12[0],v13[0],
-                    v14[0],v15[0],v16[0],v17[0],v18[0],v19[0],v20[0]));
-            adapterCursos.agregarFragmentos(CursosDetailFragment.newInstance(v00[1],v01[1],v02[1],
-                    v03[1],v04[1],v05[1],v06[1],v07[1],v08[1],v09[1],v10[1],v11[1],v12[1],v13[1],
-                    v14[1],v15[1],v16[1],v17[1],v18[1],v19[1],v20[1]));
-            adapterCursos.agregarFragmentos(CursosDetailFragment.newInstance(v00[2],v01[2],v02[2],
-                    v03[2],v04[2],v05[2],v06[2],v07[2],v08[2],v09[2],v10[2],v11[2],v12[2],v13[2],
-                    v14[2],v15[2],v16[2],v17[2],v18[2],v19[2],v20[2]));
-
-//            mViewPager.setAdapter(adapterCursos);
-
-            b_play.setOnClickListener(new View.OnClickListener() {
+            //Buscar
+            b_buscar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+//                    loadFragment(new GaleriaFragment());
+                    arrayCursodetallado.clear();
+                    EditText user = (EditText)findViewById(R.id.in_curso_nombre);
+                    nombreBuscar = user.getText().toString();
 //                    curs.setCursos();
-//                    rellenarTextviews(cursos);
-/*
+
+                    buscarCursoNombre(  nombreBuscar,stringFabricante,stringArea,stringCategoria,stringSubcategoria,stringModalidad);
+//                    viewPager.setAdapter(pagerAdapter);
+//                    arrayCursodetallado = dbh.getAllvaluesCudet();
                     //lista
-                    ListView lista = (ListView) findViewById(R.id.listView1);
-                    ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, sugerencias);
-                    lista.setAdapter(adapter);
-
-                    //galeria de imagenes y nombres
-
-                    adapterCursos = new FragmentAdapter(getSupportFragmentManager());
-
-                    mViewPager = (ViewPager) findViewById(R.id.pager);
-                    adapterCursos.agregarFragmentos(CursosDetailFragment.newInstance(v00[0],v01[0],
-                    v02[0],v03[0],v04[0],v05[0],v06[0],v07[0],v08[0],v09[0],v10[0],v11[0],v12[0],
-                    v13[0],v14[0],v15[0],v16[0],v17[0],v18[0],v19[0],v20[0]));
-                    adapterCursos.agregarFragmentos(CursosDetailFragment.newInstance(v00[1],v01[1],
-                    v02[1],v03[1],v04[1],v05[1],v06[1],v07[1],v08[1],v09[1],v10[1],v11[1],v12[1],
-                    v13[1],v14[1],v15[1],v16[1],v17[1],v18[1],v19[1],v20[1]));
-                    adapterCursos.agregarFragmentos(CursosDetailFragment.newInstance(v00[2],v01[2],
-                    v02[2],v03[2],v04[2],v05[2],v06[2],v07[2],v08[2],v09[2],v10[2],v11[2],v12[2],
-                    v13[2],v14[2],v15[2],v16[2],v17[2],v18[2],v19[2],v20[2]));
-*/
-                    mViewPager.setAdapter(adapterCursos);
+                    publicarLista();
+                    b_anterior.setVisibility(View.INVISIBLE);
+                    b_anterior.setClickable(false);
+                    if (arrayPosicionFin > -1) {
+                        ListView lista = (ListView) findViewById(R.id.listView1);
+                        adapterCudet = new CursosListAdapter(getApplicationContext(), R.layout.fragment_cursos1, arrayCursodetalladoView);
+                        lista.setAdapter(adapterCudet);
+                    }
                 }
             });
 
+//                if (destacado != "") {
+
+            //lista
+            /*
+            publicarLista();
+//            ListView lista = (ListView) findViewById(R.id.listView1);
+            if (arrayPosicionFin > -1) {
+                adapterCudet = new CursosListAdapter(this, R.layout.fragment_cursos1, arrayCursodetalladoView);
+                lista.setAdapter(adapterCudet);
+            }
+            */
+            b_posterior.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cont = 0;
+                    arrayCursodetalladoView.clear();
+                    iniAnt = ini;
+                    for (int i = iniAnt;i<arrayCursodetallado.size();i++) {
+                        arrayCursodetalladoView.add(arrayCursodetallado.get(i));
+                        cont ++;
+                        if (cont == 5) {
+                            i = arrayCursodetallado.size();
+                        }
+                    }
+                    ini = ini + cont;
+//                    iniAnt = iniAnt - 5;
+                    b_anterior.setVisibility(View.VISIBLE);
+                    b_anterior.setClickable(true);
+                    if (ini >= arrayPosicionFin) {
+                        b_posterior.setVisibility(View.INVISIBLE);
+                        b_posterior.setClickable(false);
+                    } else {
+                        b_posterior.setVisibility(View.VISIBLE);
+                        b_posterior.setClickable(true);
+                    }
+                    if (arrayPosicionFin > -1) {
+                        ListView lista = (ListView) findViewById(R.id.listView1);
+                        adapterCudet = new CursosListAdapter(getApplicationContext(), R.layout.fragment_cursos1, arrayCursodetalladoView);
+                        lista.setAdapter(adapterCudet);
+                    }
+
+                }
+            });
+            b_anterior.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cont = 0;
+                    arrayCursodetalladoView.clear();
+                    ini = iniAnt;
+                    for (int i = ini;i<arrayCursodetallado.size();i++) {
+                        cursodetallado cudet = arrayCursodetallado.get(i);
+                        arrayCursodetalladoView.add(cudet);
+                        cont ++;
+                        if (cont == 5) {
+                            i = arrayCursodetallado.size();
+                        }
+                    }
+                    ini = ini + cont;
+                    b_posterior.setVisibility(View.VISIBLE);
+                    b_posterior.setClickable(true);
+                    if (iniAnt <= 0) {
+                        b_anterior.setVisibility(View.INVISIBLE);
+                        b_anterior.setClickable(false);
+                    } else {
+                        b_anterior.setVisibility(View.VISIBLE);
+                        b_anterior.setClickable(true);
+                        iniAnt = iniAnt - 5;
+                    }
+                    if (arrayPosicionFin > -1) {
+                        ListView lista = (ListView) findViewById(R.id.listView1);
+                        adapterCudet = new CursosListAdapter(getApplicationContext(), R.layout.fragment_cursos1, arrayCursodetalladoView);
+                        lista.setAdapter(adapterCudet);
+                    }
+                }
+            });
+
+            lista.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            try {
+                                cursodetallado mycurso = (cursodetallado) parent.getItemAtPosition(position);
+//                                Cursor mycursor = (Cursor) parent.getItemAtPosition(position);
+                                arrayDescripcion = mycurso.getDescripcion();
+                                arrayObjetivos = mycurso.getObjetivos();
+                                arrayContenidos = mycurso.getContenidos();
+                                arraySku = mycurso.getSku();
+                                arrayNombre = mycurso.getNombre();
+                                arrayContenidos = mycurso.getContenidos();
+                                arrayPosicion = position;
+                                arrayPosicionReal = iniAnt + position;
+                                //Toast.makeText(parent.getContext(), arrayContenidos,Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(arrayDescripcion,arrayDescripcion,Toast.LENGTH_LONG).show();
+                                Intent myIntent = new Intent(view.getContext(), NextCursosActivity.class);
+                                startActivityForResult(myIntent, 0);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+            );
+
         } catch (Exception e) {
-            Log.e("ERROR", "Error onCreate: " + e);
+            e.printStackTrace();
+            Log.e("ERROR", "Error onCreate: " + e.getMessage());
         }
 
     }
@@ -476,130 +505,17 @@ public class CursosActivity extends AppCompatActivity {
             setPlayer();
         }
     } */
-/*
-    private void setActionBar() {
-        if (getActionBar() != null) {
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
 
-    private void setPlayer(MediaPlayer mediaPlayer) {
-        //mediaPlayer = MediaPlayer.create(this, R.raw.i_t_amapola);
-        if (mediaPlayer != null ) {
-            mediaPlayer.setLooping(false);
-            //init();
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-        }
-
-    }
-
-    @Override
-    public void onRequestPermissionsResult(
-            int requestCode,
-            @NonNull String[] permissions,
-            @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case AUDIO_PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //setPlayer(mediaPlayer);
-                } else {
-                    this.finish();
-                }
-        }
-    }
-*/
-// Fin BaseActivity
-/*
-    //@Override
-    protected void onDraw(Canvas canvas) {
-
-    }
-*/
-    /*
-    class PlayerTask extends AsyncTask<String, Void, Boolean> {
-        @Override
-        protected Boolean doInBackground(String... strings) {
-
-            try {
-                mediaPlayer.setDataSource(strings[0]);
-                mediaPlayer.prepare();
-                prepared = true;
-                return prepared;
-            } catch(IOException e) {
-                Log.e("ERROR", "Error doInBackground():" + e);
-                e.printStackTrace();
-                return false;
-            }
-        }
-
-    }
-
-    @Override
-    protected void onPause() {
-        try {
-            super.onPause();
-
-            if (isFinishing() && mediaPlayer != null) {
-                mVisualizer.release();
-                mEqualizer.release();
-                mediaPlayer.release();
-                mediaPlayer = null;
-                System.exit(0);
-            }
-
-        } catch (Exception e) {
-            Log.e("ERROR", "Error onPause: " + e);
-        }
-    }
-        */
 
     @Override
     protected void onResume() {
         super.onResume();
-/*
-        if(started) {
-            mediaPlayer.start();
-        }
-        // Load an ad into the AdMob banner view.
-        AdView adView = (AdView) getView().findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .setRequestAgent("android_studio:ad_template").build();
-        adView.loadAd(adRequest);
-        //initialize views
-        initializeViews();
-        setInstrumentNames();
 
-        mediaPlayer1.start();
-        mediaPlayer2.start();
-        mediaPlayer3.start();
-        mediaPlayer4.start();
-        // Start the songtime thread and remember its object so it can be stopped legally
-        play();
-        setEqualizer();
-        setupKnobButtons();
-        */
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // mVisualizer.release();
-        //mEcualizador.release();
-        //mediaPlayer.stop();
-        //mediaPlayer.release();
-        //mediaPlayer = null;
-        //playerTask.cancel(true);
-        //playerTask = null;
     }
 
 
@@ -607,393 +523,7 @@ public class CursosActivity extends AppCompatActivity {
     protected int getLayout() {
         return R.layout.activity_cursos;
     }
-    /*protected int getLayout() {
-        return R.layout.activity_bar_visualizer;
-    }*/
-// Fin BaseVisulizerActivity
-/*
-    public void playPause_01(View v) {
-//        playPauseBtnClicked_01((ImageButton) ib_play_pause_01 , v);
-    }
-    */
-    public void getCursosActual() {
-            curs.getCursos();
-    }
-/*    private void loadFragment(Fragment fragment) {
-// create a FragmentManager
-        FragmentManager fm = getFragmentManager();
-// create a FragmentTransaction to begin the transaction and replace the Fragment
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-// replace the FrameLayout with new Fragment
-        fragmentTransaction.replace(R.id.pager, fragment);
-        fragmentTransaction.commit(); // save the changes
-    }
-    */
-    /*
-    //Este metodo rellena los textviews del documento xml
-    public void rellenarTextviews(cursos curs) {
-        curso[] cuArray = curs.getCurso();
-        String[] campos = {cas_area,cas_categoria,cas_subcategoria,cas_sku,cas_nombre,cas_duracion,
-                cas_inicio,cas_formato,cas_idioma,cas_modalidad,cas_fabricante,cas_nivel,
-                cas_oficial,cas_documentacion,cas_descripcion,cas_objetivos,cas_audiencia,
-                cas_contenidos,cas_image,cas_pdf_curso,cas_destacado};
-        for (int i = 0; i < cuArray.length; i++) {
-            curso cu = cuArray[i];
-            rellenarArea(cu);
-            rellenarCategoria(cu);
-            rellenarSubcategoria(cu);
-            rellenarSku(cu);
-            rellenarNombre(cu);
-            rellenarDuracion(cu);
-            rellenarInicio(cu);
-            rellenarFormato(cu);
-            rellenarIdioma(cu);
-            rellenarModalidad(cu);
-            rellenarFabricante(cu);
-            rellenarNivel(cu);
-            rellenarOficial(cu);
-            rellenarDocumentacion(cu);
-            rellenarDescripcion(cu);
-            rellenarObjetivos(cu);
-            rellenarAudiencia(cu);
-            rellenarContenidos(cu);
-            rellenarImage(cu);
-            rellenarPdf(cu);
-            rellenarDestacado(cu);
-        }
-    }
 
-    public void rellenarCategoria(cursos curs){
-        TextView text = null;
-        String dato = "";
-        cursos.CATEGORIA categorias[] = curs.getCategorias();
-
-        text = findViewById(R.id.detalles_categoria);
-        if(categorias!=null) {
-            for (int i = 0; i < categorias.length; i++) {
-                if (i == categorias.length - 1)
-                    dato += categorias[i];
-                else
-                    dato += categorias[i] + " / ";
-            }
-            if (dato != "null") {
-                text.setText(dato);
-            }
-        }else{
-            LinearLayout li = findViewById(R.id.linearcategoria);
-            li.setVisibility(View.GONE);
-        }
-    }
-
-
-
-    // Esto metodos rellenan los textviews (cada uno el suyo) del documento xml ademas se comprueba si el dato es null o no.
-    //TODO rellenar los else, y borrar los layouts si estan vacios
-    public void rellenarArea(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_area);
-        dato = IntToString(cu.getArea());
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.lineararea);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarCategoria(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_categoria);
-        dato = cu.getCategoria();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearcategoria);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarSubcategoria(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_subcategoria);
-        dato = cu.getSubcategoria();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearsubcategoria);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarSku(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_sku);
-        dato = cu.getSku();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearsku);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarNombre(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_nombre);
-        dato = cu.getNombre();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearnombre);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarDuracion(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_duracion);
-        dato = cu.getDuracion();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearduracion);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarInicio(curso curs){
-        TextView text;
-        String dato;
-        Date fecha;
-
-        text = findViewById(R.id.detalles_inicio);
-        fecha = curs.getInicio();
-        dato = fecha.toString();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearinicio);
-            li.setVisibility(View.GONE);
-        }
-
-    }
-    public void rellenarFormato(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_formato);
-        dato = cu.getFormato();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearformato);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarIdioma(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_idioma);
-        dato = cu.getIdioma();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearidioma);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarModalidad(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_modalidad);
-        dato = cu.getModalidad();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearmodalidad);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarFabricante(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_fabricante);
-        dato = cu.getFabricante();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearfabriacante);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarNivel(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_nivel);
-        dato = cu.getNivel();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearnivel);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarOficial(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_oficial);
-        dato = cu.getOficial();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearoficial);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarDocumentacion(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_documenacion);
-        dato = cu.getDocumentacion();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.lineardocumetacion);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarDescripcion(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_descripcion);
-        dato = cu.getDescripcion();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.lineardescripcion);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarObjetivos(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_objetivos);
-        dato = cu.getObjetivos();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearobjetivos);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarAudiencia(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_audiencia);
-        dato = cu.getAudiencia();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearaudiencia);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarContenidos(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_contenidos);
-        dato = cu.getContenidos()e();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearcontenidos);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarImage(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_image);
-        dato = cu.getImage();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearimage);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarPdf(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_pdf);
-        dato = cu.getPdf_curso();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.linearpdf);
-            li.setVisibility(View.GONE);
-        }
-    }
-    public void rellenarDestacado(curso cu){
-        TextView text;
-        String dato;
-
-        text = findViewById(R.id.detalles_destacado);
-        dato = cu.getDestacado();
-        if(dato!=null) {
-            text.setText(dato);
-        }else{
-            LinearLayout li = findViewById(R.id.lineardestacado);
-            li.setVisibility(View.GONE);
-        }
-    }
-*/
-// FIN RELLENAR
-
-
-    /**
-     * Este metodo recibe una vista y lanza un intent con el enlace Web del cursos de la clase
-     * @param view
-     */
-    /*
-    public void irAEnlaceweb(View view)
-    {
-        //TODO HAY QUE PROBARLO BIEN, SI NO EXISTE EL ENLACE NO SE QUE PASA, MIRAR ENLACE POR DEFECTO
-        String enlace;
-        TextView textView = findViewById(R.id.detalles_enlaceweb);
-        enlace = textView.getText().toString();
-        enlace = curso.getEnlace_web();
-        if(enlace!=null) {
-            try {
-                Uri uri = Uri.parse(enlace);//y Su URI
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri); //creo el intent
-                startActivity(intent);
-
-            } catch (Throwable t) {
-                Log.e("MIAPP", "ERROR", t);
-            }
-        }
-    }
-
-*/
     /**
      * Recorta un string dado, por lo general utilizado para que el enlace web quede mas visible
      * @param dato
@@ -1008,93 +538,104 @@ public class CursosActivity extends AppCompatActivity {
         }
         return info;
     }
-/*
-    // Version antigua de rellenarTextViews();
-    public void mostrarCurso(curso curs){
-        TextView text;
-
-        text = findViewById(R.id.detalles_area);
-        text.setText(curs.getArea());
-        text = findViewById(R.id.detalles_categoria);
-        text.setText(curs.getCategoria());
-        text = findViewById(R.id.detalles_subcategoria);
-        text.setText(curs.getSubcategoria());
-        text = findViewById(R.id.detalles_sku);
-        text.setText(curs.getSku());
-        text = findViewById(R.id.detalles_nombre);
-        text.setText(curs.getNombre());
-        text = findViewById(R.id.detalles_duracion);
-        text.setText(curs.getDuracion());
-        text = findViewById(R.id.detalles_inicio);
-        text.setText(curs.getInicio());
-
-
-        text = findViewById(R.id.detalles_contenidos);
-        text.setText(curs.getContenidos());
-
-        text = findViewById(R.id.detalles_audiencia);
-        text.setText(curs.getAudiencia());
-
-        text = findViewById(R.id.detalles_documenacion);
-        text.setText(curs.getDocumentacion());
-
-        text = findViewById(R.id.detalles_destacado);
-        text.setText(curs.isDestacado()+"");
-
-        text = findViewById(R.id.detalles_pdf);
-        text.setText(curs.getPdf_curso());
-
-        text = findViewById(R.id.detalles_enlaceweb);
-        text.setText(curs.getEnlace_web());
-
-        text = findViewById(R.id.detalles_horario);
-        text.setText(curs.getHorario());
-
-        text = findViewById(R.id.detalles_coste);
-        text.setText(curs.getCoste()+"");
-
-        text = findViewById(R.id.detalles_infobasica);
-        text.setText(curs.getInfo_basica());
-    }
-
-*/
-    /**
-     * Metodo utilizado para el boton de ver mas detalles
-     *
-     * @ param view El botón de más información pulsado
-     */
-    /*
-    public void sacarInfoDetalle(View view) {
-        TextView text;
-        text = findViewById(R.id.detalles_infobasica);
-        Button boton =(Button)view;
-        TextView titulo =findViewById(R.id.textviewinfobasica);
-        if(botonInformacion == false){
-            text.setText(puntoDeInteres.getInfo_detallada());
-
-            boton.setText("menos información");
-            int colorGris = getResources().getColor(R.color.colorGris);
-            boton.setBackgroundColor(colorGris);
-
-            titulo.setText(R.string.info_detallada);
-
-            botonInformacion=true;
-        }else{
-            int rojoRivas=getResources().getColor(R.color.rojoRivas);
-            text.setText(puntoDeInteres.getInfo_basica());
-
-            boton.setText("más información");
-            boton.setBackgroundColor(rojoRivas);
-
-            titulo.setText(R.string.info_basica);
-            botonInformacion=false;
-
-        }
-
-    }
-*/
     public void verValor(View v){
         EditText campoTexto = (EditText) findViewById(R.id.in_curso_nombre);
         Log.d("Valor ET", campoTexto.getText().toString());
+    }
+    public void buscarCursoNombre(String nom,String f,String a,String c,String s,String m) {
+        try {
+            int con = 0;
+            if (nom == null || nom == "" || nom == " " ) {
+                nom = "*";
+            } else {
+                con++;
+            }
+            if (f == null || f == "" || f == "Todo") {
+                f = "*";
+            } else {
+                con++;
+            }
+            if (a == null || a == "" || a == "Todo") {
+                a = "*";
+            } else {
+                con++;
+            }
+
+            if (c == null || c == "" || c == "Todo") {
+                c = "*";
+            } else {
+                con++;
+            }
+
+            if (s == null || s == "" || s == "Todo") {
+                s = "*";
+            } else {
+                con++;
+            }
+
+            if (m == null || m == "" || m == "Todo") {
+                m = "*";
+            } else {
+                con++;
+            }
+            if (con > 0) {
+                arrayCursodetallado = dbh.getAllvaluesCudet(nom, a, c, s, f, m, con);
+            }
+            arrayPosicionFin = arrayCursodetallado.size()-1;
+            ini = 0;
+            iniAnt = 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d("ERROR", "Buscar = " + e.getMessage());
+        }
+
+    }
+    public void publicarLista() {
+        //lista
+        try {
+            b_anterior.setVisibility(View.INVISIBLE);
+            b_anterior.setClickable(false);
+            int inicio = 0;
+            ini = 0;
+            iniAnt = 0;
+            if (arrayCursodetallado.size() > 0) {
+                arrayCursodetalladoView.clear();
+                //lista encontrada de 5 en 5
+                cont = 0;
+                for (int i = inicio; i < arrayCursodetallado.size(); i++) {
+                    cursodetallado cudet = arrayCursodetallado.get(i);
+                    arrayCursodetalladoView.add(cudet);
+                    cont++;
+                    if (cont == 5) {
+                        i = arrayCursodetallado.size();
+                    }
+                }
+                ini = cont;
+            } else {
+                Toast.makeText(getApplicationContext(),"No ha encontrado registros",Toast.LENGTH_LONG);
+                arrayPosicionFin = -1;
+            }
+            arrayPosicionFin = arrayCursodetallado.size()-1;
+            if (arrayCursodetallado.size() < 6) {
+                b_posterior.setVisibility(View.INVISIBLE);
+                b_posterior.setClickable(false);
+            } else {
+                if (ini <= arrayPosicionFin) {
+                    b_posterior.setVisibility(View.VISIBLE);
+                    b_posterior.setClickable(true);
+                } else {
+                    b_posterior.setVisibility(View.INVISIBLE);
+                    b_posterior.setClickable(false);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d("ERROR", "publicarLista = " + e.getMessage());
+        }
+    }
+    public String [] getStrArrWithId (String id, Context context) {
+        int arrId = context.getResources().getIdentifier(id, "array", context.getPackageName());
+        String[] strArr = context.getResources().getStringArray(arrId);
+        return strArr;
     }
 }

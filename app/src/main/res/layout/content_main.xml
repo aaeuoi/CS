@@ -49,9 +49,70 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/pagermain"
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
+                android:layout_height="150dp"
                 tools:context=".MainActivity" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorBlueLight"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite">
+                <EditText
+                    android:id="@+id/in_curso_nombre_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:focusableInTouchMode="true"
+                    android:cursorVisible="false"
+                    android:hint="@string/hint_nombre" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGrayLight">
+                <Button
+                    android:id="@+id/button_buscar_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_buttom_buscar"
+                    android:layout_marginTop="0dp"/>
+                <!--            android:onClick="verValor"-->
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_up_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/text_buttom_up"
+                android:background="@color/colorBlueLight"
+                android:text="@string/text_buttom_up"/>
+            <!--android:onClick="verResto"/-->
+            <ListView
+                android:id="@+id/listView1"
+                android:layout_width="match_parent"
+                android:layout_height="750dp"
+                android:layout_gravity="center_horizontal" />
+            <Button
+                android:id="@+id/button_down_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/text_buttom_down"
+                android:background="@color/colorBlueLight"
+                android:text="@string/text_buttom_down"/>
+            <!--android:onClick="verResto"/-->
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
 <!--/androidx.constraintlayout.widget.ConstraintLayout-->

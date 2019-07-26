@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".actividades.NextMainActivity"
+    android:orientation="vertical">
+
+    <!--PADRE -->
+    <LinearLayout
+        android:id="@+id/linearlayout_cursos_textos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrayLight"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lineartitnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGrayDark"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:id="@+id/lineartitposicion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGrayDark"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/det_posicion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lineartitde"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGrayDark"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/det_de"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:text="@string/tit_de"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lineartitposicion_fin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGrayDark"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/det_posicion_fin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lineartitcab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGrayDark"
+            android:orientation="horizontal"
+            android:weightSum="100">
+            <LinearLayout
+                android:id="@+id/lineartitnombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBlue"
+                android:orientation="horizontal"
+                android:weightSum="80">
+                <TextView
+                    android:id="@+id/det_nombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"
+                    android:padding="1dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lineartittexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGrayDark"
+            android:orientation="horizontal"
+            android:weightSum="100">
+            <TextView
+                android:id="@+id/det_tit_texto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textAlignment="center"
+                 android:textSize="18sp"
+                android:padding="1dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lineartexto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100">
+            <TextView
+                android:id="@+id/det_texto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:padding="1dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!--FIN PADRE -->
+</ScrollView>

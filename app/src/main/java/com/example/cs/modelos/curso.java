@@ -10,10 +10,10 @@ public class curso {
     protected String cas_sku; // pku
     protected String cas_nombre;
     protected int    cas_duracion;// duración en horas
-    protected Date   cas_inicio;//del curso
     protected String cas_formato;
     protected String cas_idioma;
     protected String cas_modalidad;
+//    protected String mmdalidad;
     protected int    cas_fabricante;
     protected String cas_nivel;
     protected String cas_oficial;
@@ -30,9 +30,9 @@ public class curso {
         super();
     }
 
-    public curso(int v0, int v1, int v2, String v3, String v4, int v5, Date v6, String v7
-            , String v8, String v9, int v10, String v11, String v12, String v13, String v14
-            , String v15, String v16, String v17, String v18, String v19, int v20) {
+    public curso(int v0, int v1, int v2, String v3, String v4, int v5, String v6
+            , String v7, String v8, int v9, String v10, String v11, String v12, String v13
+            , String v14, String v15, String v16, String v17, String v18, int v19) {
         super();
         this.cas_area = v0;
         this.cas_categoria = v1;
@@ -40,21 +40,21 @@ public class curso {
         this.cas_sku = v3;
         this.cas_nombre = v4;
         this.cas_duracion = v5;
-        this.cas_inicio = v6;
-        this.cas_formato = v7;
-        this.cas_idioma = v8;
-        this.cas_modalidad = v9;
-        this.cas_fabricante = v10;
-        this.cas_nivel = v11;
-        this.cas_oficial = v12;
-        this.cas_documentacion = v13;
-        this.cas_descripcion = v14;
-        this.cas_objetivos = v15;
-        this.cas_audiencia = v16;
-        this.cas_contenidos = v17;
-        this.cas_image = v18;
-        this.cas_pdf_curso = v19;
-        this.cas_destacado = v20;
+        this.cas_formato = v6;
+        this.cas_idioma = v7;
+        this.cas_modalidad = v8;
+//        this.mmdalidad = v8;
+        this.cas_fabricante = v9;
+        this.cas_nivel = v10;
+        this.cas_oficial = v11;
+        this.cas_documentacion = v12;
+        this.cas_descripcion = v13;
+        this.cas_objetivos = v14;
+        this.cas_audiencia = v15;
+        this.cas_contenidos = v16;
+        this.cas_image = v17;
+        this.cas_pdf_curso = v18;
+        this.cas_destacado = v19;
     }
 
     public int getArea() {
@@ -103,12 +103,6 @@ public class curso {
         this.cas_duracion = duracion;
     }
 
-    public Date getInicio() { return cas_inicio; }
-
-    public void setInicio(Date inicio) {
-        this.cas_inicio = inicio;
-    }
-
     public String getFormato() {
         return cas_formato;
     }
@@ -125,14 +119,18 @@ public class curso {
         this.cas_idioma = idioma;
     }
 
+    public String getModalidad() {         return cas_modalidad;    }
+
+    public void setModalidad(String modalidad) {        this.cas_modalidad = modalidad;    }
+    /*
     public String getModalidad() {
-        return cas_modalidad;
+        return mmdalidad;
     }
 
     public void setModalidad(String modalidad) {
-        this.cas_modalidad = modalidad;
+        this.mmdalidad = modalidad;
     }
-
+*/
     public int getFabricante() { return cas_fabricante; }
 
     public void setFabricante(int fabricante) {
@@ -224,9 +222,9 @@ public class curso {
         this.cas_sku = cu.getSku();
         this.cas_nombre = cu.getNombre();
         this.cas_duracion = cu.getDuracion();
-        this.cas_inicio = cu.getInicio();
         this.cas_formato = cu.getFormato();
         this.cas_idioma = cu.getIdioma();
+//        this.mmdalidad = cu.getModalidad();
         this.cas_modalidad = cu.getModalidad();
         this.cas_fabricante = cu.getFabricante();
         this.cas_nivel = cu.getNivel();
